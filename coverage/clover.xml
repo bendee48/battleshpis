@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1705429318533" clover="3.2.0">
-  <project timestamp="1705429318533" name="All files">
-    <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1" elements="2" coveredelements="2" complexity="0" loc="1" ncloc="1" packages="1" files="1" classes="1"/>
-    <file name="ship.js" path="/Users/bendee/JavaScript/battleships/src/ship.js">
-      <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+<coverage generated="1707160582133" clover="3.2.0">
+  <project timestamp="1707160582133" name="All files">
+    <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2" elements="3" coveredelements="3" complexity="0" loc="1" ncloc="1" packages="1" files="1" classes="1"/>
+    <file name="gameboard.js" path="/Users/bendee/JavaScript/battleships/src/gameboard.js">
+      <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
       <line num="3" count="1" type="stmt"/>
     </file>
   </project>

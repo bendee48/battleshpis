@@ -1,0 +1,18 @@
+/* testing */
+
+.board {
+  width: 400px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.cell {
+  box-sizing: border-box;
+  width: 40px;
+  height: 40px;
+  border: 1px solid black;
+}
+
+.destroyer {
+  background-color: green;
+}
