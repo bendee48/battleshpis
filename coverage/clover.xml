@@ -1,10 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1707160582133" clover="3.2.0">
-  <project timestamp="1707160582133" name="All files">
-    <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2" elements="3" coveredelements="3" complexity="0" loc="1" ncloc="1" packages="1" files="1" classes="1"/>
+<coverage generated="1707243532399" clover="3.2.0">
+  <project timestamp="1707243532399" name="All files">
+    <metrics statements="15" coveredstatements="15" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3" elements="18" coveredelements="18" complexity="0" loc="15" ncloc="15" packages="1" files="1" classes="1"/>
     <file name="gameboard.js" path="/Users/bendee/JavaScript/battleships/src/gameboard.js">
-      <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <metrics statements="15" coveredstatements="15" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
       <line num="3" count="1" type="stmt"/>
+      <line num="4" count="1" type="stmt"/>
+      <line num="17" count="1" type="stmt"/>
+      <line num="18" count="1" type="stmt"/>
+      <line num="20" count="1" type="stmt"/>
+      <line num="21" count="10" type="stmt"/>
+      <line num="22" count="100" type="stmt"/>
+      <line num="23" count="100" type="stmt"/>
+      <line num="27" count="1" type="stmt"/>
+      <line num="39" count="100" type="stmt"/>
+      <line num="40" count="100" type="stmt"/>
+      <line num="51" count="100" type="stmt"/>
+      <line num="52" count="100" type="stmt"/>
+      <line num="54" count="100" type="stmt"/>
+      <line num="56" count="100" type="stmt"/>
     </file>
   </project>
 </coverage>
