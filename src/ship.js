@@ -1,7 +1,12 @@
 class Ship {
-  constructor(length) {
+  constructor(name, length) {
+    this._name = name;
     this._length = length;
     this._hits = 0;
+  }
+
+  get name() {
+    return this._name;
   }
 
   get length() {

@@ -2,9 +2,19 @@ import Ship from 'ship';
 
 // Ship Class
 describe('Ship Class', () => {
-  const battleship = new Ship(4);
-  const submarine = new Ship(3);
-  const patrolBoat = new Ship(2);
+  const battleship = new Ship('battleship', 4);
+  const submarine = new Ship('submarine', 3);
+  const patrolBoat = new Ship('patrolBoat', 2);
+
+  describe('.name', () => {
+    it('returns the name of a battleship', () => {
+      expect(battleship.name).toBe('battleship');
+    })
+
+    it('returns the name of a submarine', () => {
+      expect(submarine.name).toBe('submarine');
+    })
+  })
 
   describe('.length', () => {
     it('returns the length of a battleship', () => {
@@ -15,7 +25,7 @@ describe('Ship Class', () => {
       expect(submarine.length).toBe(3);
     });
 
-    it('returns the length of a submarine', () => {
+    it('returns the length of a patrol boat', () => {
       expect(patrolBoat.length).toBe(2);
     });
   });
@@ -42,13 +52,13 @@ describe('Ship Class', () => {
 
   describe('isSunk()', () => {
     it('returns true if ship has been hit more times than it\'s length', () => {
-      const submarine = new Ship(3);
+      const submarine = new Ship('submarine', 3);
       for (let i = 0; i < 3; i++) submarine.hit();
       expect(submarine.isSunk()).toBe(true);
     })
 
     it('returns false if ship hasn\'t been hit more times than it\'s length', () => {
-      const submarine = new Ship(3);
+      const submarine = new Ship('submarine', 3);
       for (let i = 0; i < 2; i++) submarine.hit();
       expect(submarine.isSunk()).toBe(false);
     })
