@@ -1,11 +1,7 @@
 class Gameboard {
   constructor() {
     this.board = this.createBoard();
-    this.cells = { a1: {className: 'battleship'} };
-  }
-
-  placeShip(coord, ship) {
-
+    this.cells = this.#createCellDict();
   }
 
   /**
@@ -26,6 +22,27 @@ class Gameboard {
 
     return board;
   }
+
+  /**
+   * Places a ship on the board from the provided coordinate.
+   * 
+   * @param {string} coord - Coordinate to place head of ship.
+   * @param {object} ship - A Ship object.
+   */
+  placeShip(coord, ship) {
+    // Fill cells to the ships length
+    for (let i = 0; i < ship.length; i++) {
+      // Mark cell as taken
+      this.cells[coord].classList.add(ship.name, 'taken');
+      // Create coord for the next letter (horizontal movement)
+      let [letter, num] = coord.split('');
+      coord = String.fromCharCode(letter.charCodeAt() + 1) + num;
+    }
+  }
+
+  // receiveAttack() {
+  //   return 1;
+  // }
 
   /**
    * Creates a coordinate.
@@ -54,6 +71,19 @@ class Gameboard {
     cell.dataset.coordinate = coord;
 
     return cell;
+  }
+
+  /**
+   * Creates a dictionary for the gameboard cells.
+   * 
+   * @private
+   * @returns {Object} A dictionary of coordinate keys mapped to their HTML element.
+   */
+  #createCellDict() {
+    return [...this.board.children].reduce((dict, cell) => {
+      dict[cell.dataset.coordinate] = cell;
+      return dict;
+    }, {});
   }
 }
 
