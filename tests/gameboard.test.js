@@ -3,9 +3,23 @@
  */
 
 import Gameboard from 'gameboard';
+import Ship from 'ship';
+jest.mock('ship');
+
+const ShipMock = Ship;
+
+ShipMock.mockImplementation(function (name, length) {
+  this.name = name;
+  this.length = length;
+  this.hits = 0;
+  this.hit = jest.fn(() => this.hits++);
+  this.isSunk = jest.fn(() => this.hits >= this.length);
+});
+
 
 // Gameboard Class
-describe('Gameboard class', () => {  
+describe('Gameboard class', () => { 
+
   describe('createBoard()', () => {
     const gameboard = new Gameboard();
 
@@ -31,7 +45,7 @@ describe('Gameboard class', () => {
     const gameboard = new Gameboard();
 
     it('places a battleship (4 cells) on the board', () => {
-      const battleshipMock = {name: 'battleship', length: 4}
+      const battleshipMock = new ShipMock('battleship', 4)
       gameboard.placeShip('A1', battleshipMock);
       expect(gameboard.cells['A1'].className.includes('battleship taken')).toBe(true);
       expect(gameboard.cells['B1'].className.includes('battleship')).toBe(true);
@@ -41,7 +55,7 @@ describe('Gameboard class', () => {
     })
 
     it('places a submarine (3 cells) on the board', () => {
-      let submarineMock = { name: 'submarine', length: 3 };
+      const submarineMock = new ShipMock('submarine', 3);
       gameboard.placeShip('D2', submarineMock);
       expect(gameboard.cells['D2'].className.includes('submarine')).toBe(true);
       expect(gameboard.cells['E2'].className.includes('submarine')).toBe(true);
@@ -52,40 +66,41 @@ describe('Gameboard class', () => {
 
   describe('receiveAttack()', () => {
     const gameboard = new Gameboard();
-    const shipMock = jest.fn(() => {
-      return { name: 'battleship', length: 4, hit() { this.hits++ }, hits: 0, isSunk() { return this.hits >= this.length } };
-    })()
+    const shipMock = new ShipMock('battleship', 4)
     gameboard.placeShip('A1', shipMock);
-    // Spy to see if hit() is called on the shipMock
-    const hitSpy = jest.spyOn(shipMock, 'hit');
 
-    it('sends hit to a ship if attack is on target (1)',  () => {
+    it('sends hit to a ship if attack is on target',  () => {
       gameboard.receiveAttack('A1');
-      expect(hitSpy).toHaveBeenCalledTimes(1)
+      expect(shipMock.hit).toHaveBeenCalledTimes(1);
     })
 
-    it('sends hit to a ship if attack is on target (2)', () => {
+    it('sends hit to a ship if attack is on target a second time', () => {
       gameboard.receiveAttack('B1');
-      expect(hitSpy).toHaveBeenCalledTimes(1)
+      expect(shipMock.hit).toHaveBeenCalledTimes(1)
     }) 
 
     it('saves coordinate if attack is a miss', () => {
       gameboard.receiveAttack('B2');
       expect(gameboard.misses.includes('B2')).toBe(true);
     });
+  });
 
-    describe('allSunk()', () => {
-      it('returns false if all the ships on the board have not been sunk', () => {
-        // shipMock already hit twice TODO fix with mocks and resets
-        gameboard.receiveAttack('C1');
-        expect(gameboard.allSunk()).toBe(false);
-      })
+  describe('allSunk()', () => {
+    const gameboard = new Gameboard();
+    const battleshipMock = new ShipMock('battleship', 4)
+    gameboard.placeShip('A1', battleshipMock);
 
-      it('returns true if all the ships on the board have been sunk', () => {
-        // shipMock already hit thrice TODO fix with mocks and resets
-        gameboard.receiveAttack('D1');
-        expect(gameboard.allSunk()).toBe(true);
-      })
-    });
+    it('returns false if not all ships on the board have been sunk', () => {
+      gameboard.receiveAttack('A1');
+      gameboard.receiveAttack('B1');
+      expect(gameboard.allSunk()).toBe(false);
+    })
+
+    it('returns true if all the ships on the board have been sunk', () => {
+      // battleshipMock has already been hit twice
+      gameboard.receiveAttack('C1');
+      gameboard.receiveAttack('D1');
+      expect(gameboard.allSunk()).toBe(true);
+    })
   });
 });
