@@ -46,16 +46,28 @@ class Gameboard {
     }
   }
 
+  /**
+   * Handles an attack on the board.
+   * 
+   * @param {string} coord - Coordinate of attack.
+   */
   receiveAttack(coord) {
     const divElement = this.cells[coord];
 
+    // check if a ship occupies the coordinate
     if (divElement.className.includes('taken')) {
       let shipName = divElement.dataset.shipName;
+      // record hit on ship
       this.ships[shipName].hit();
     } else {
+      // track misses
       this.misses.push(coord);
     }
-  } 
+  }
+
+  allSunk() {
+    return Object.entries(this.ships).every(([_, ship]) => ship.isSunk());
+  }
 
   /**
    * Creates a coordinate.

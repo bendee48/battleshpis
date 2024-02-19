@@ -1,24 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1707243532399" clover="3.2.0">
-  <project timestamp="1707243532399" name="All files">
-    <metrics statements="15" coveredstatements="15" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3" elements="18" coveredelements="18" complexity="0" loc="15" ncloc="15" packages="1" files="1" classes="1"/>
+<coverage generated="1708354724945" clover="3.2.0">
+  <project timestamp="1708354724945" name="All files">
+    <metrics statements="32" coveredstatements="32" conditionals="2" coveredconditionals="2" methods="7" coveredmethods="7" elements="41" coveredelements="41" complexity="0" loc="32" ncloc="32" packages="1" files="1" classes="1"/>
     <file name="gameboard.js" path="/Users/bendee/JavaScript/battleships/src/gameboard.js">
-      <metrics statements="15" coveredstatements="15" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
-      <line num="3" count="1" type="stmt"/>
-      <line num="4" count="1" type="stmt"/>
-      <line num="17" count="1" type="stmt"/>
-      <line num="18" count="1" type="stmt"/>
-      <line num="20" count="1" type="stmt"/>
-      <line num="21" count="10" type="stmt"/>
-      <line num="22" count="100" type="stmt"/>
-      <line num="23" count="100" type="stmt"/>
-      <line num="27" count="1" type="stmt"/>
-      <line num="39" count="100" type="stmt"/>
-      <line num="40" count="100" type="stmt"/>
-      <line num="51" count="100" type="stmt"/>
-      <line num="52" count="100" type="stmt"/>
-      <line num="54" count="100" type="stmt"/>
-      <line num="56" count="100" type="stmt"/>
+      <metrics statements="32" coveredstatements="32" conditionals="2" coveredconditionals="2" methods="7" coveredmethods="7"/>
+      <line num="3" count="3" type="stmt"/>
+      <line num="4" count="3" type="stmt"/>
+      <line num="5" count="3" type="stmt"/>
+      <line num="6" count="3" type="stmt"/>
+      <line num="15" count="3" type="stmt"/>
+      <line num="16" count="3" type="stmt"/>
+      <line num="18" count="3" type="stmt"/>
+      <line num="19" count="30" type="stmt"/>
+      <line num="20" count="300" type="stmt"/>
+      <line num="21" count="300" type="stmt"/>
+      <line num="25" count="3" type="stmt"/>
+      <line num="36" count="3" type="stmt"/>
+      <line num="38" count="3" type="stmt"/>
+      <line num="40" count="11" type="stmt"/>
+      <line num="42" count="11" type="stmt"/>
+      <line num="44" count="11" type="stmt"/>
+      <line num="45" count="11" type="stmt"/>
+      <line num="55" count="5" type="stmt"/>
+      <line num="58" count="5" type="cond" truecount="2" falsecount="0"/>
+      <line num="59" count="4" type="stmt"/>
+      <line num="61" count="4" type="stmt"/>
+      <line num="64" count="1" type="stmt"/>
+      <line num="69" count="2" type="stmt"/>
+      <line num="81" count="300" type="stmt"/>
+      <line num="82" count="300" type="stmt"/>
+      <line num="93" count="300" type="stmt"/>
+      <line num="94" count="300" type="stmt"/>
+      <line num="96" count="300" type="stmt"/>
+      <line num="98" count="300" type="stmt"/>
+      <line num="108" count="3" type="stmt"/>
+      <line num="109" count="300" type="stmt"/>
+      <line num="110" count="300" type="stmt"/>
     </file>
   </project>
 </coverage>

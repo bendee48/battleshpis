@@ -53,7 +53,7 @@ describe('Gameboard class', () => {
   describe('receiveAttack()', () => {
     const gameboard = new Gameboard();
     const shipMock = jest.fn(() => {
-      return { name: 'battleship', length: 4, hit() { this.hits++ }, hits: 0 };
+      return { name: 'battleship', length: 4, hit() { this.hits++ }, hits: 0, isSunk() { return this.hits >= this.length } };
     })()
     gameboard.placeShip('A1', shipMock);
     // Spy to see if hit() is called on the shipMock
@@ -65,7 +65,7 @@ describe('Gameboard class', () => {
     })
 
     it('sends hit to a ship if attack is on target (2)', () => {
-      gameboard.receiveAttack('C1');
+      gameboard.receiveAttack('B1');
       expect(hitSpy).toHaveBeenCalledTimes(1)
     }) 
 
@@ -74,4 +74,18 @@ describe('Gameboard class', () => {
       expect(gameboard.misses.includes('B2')).toBe(true);
     });
 
+    describe('allSunk()', () => {
+      it('returns false if all the ships on the board have not been sunk', () => {
+        // shipMock already hit twice TODO fix with mocks and resets
+        gameboard.receiveAttack('C1');
+        expect(gameboard.allSunk()).toBe(false);
+      })
+
+      it('returns true if all the ships on the board have been sunk', () => {
+        // shipMock already hit thrice TODO fix with mocks and resets
+        gameboard.receiveAttack('D1');
+        expect(gameboard.allSunk()).toBe(true);
+      })
+    });
+  });
 });
