@@ -3,22 +3,9 @@
  */
 
 import Gameboard from 'gameboard';
-import Ship from 'ship';
-jest.mock('ship');
-
-beforeEach(() => {
-  // Clear all instances and calls to constructor
-  Ship.mockClear();
-});
 
 // Gameboard Class
-describe('Gameboard class', () => {
-  // Mock implementaiton of Ship class
-  const shipMock = jest.fn().mockImplementation((name, length) => {
-    return { name, length };
-  });
-  Ship.mockImplementation(shipMock);
-  
+describe('Gameboard class', () => {  
   describe('createBoard()', () => {
     const gameboard = new Gameboard();
 
@@ -44,8 +31,8 @@ describe('Gameboard class', () => {
     const gameboard = new Gameboard();
 
     it('places a battleship (4 cells) on the board', () => {
-      let battleship = new Ship('battleship', 4);
-      gameboard.placeShip('A1', battleship);
+      const battleshipMock = {name: 'battleship', length: 4}
+      gameboard.placeShip('A1', battleshipMock);
       expect(gameboard.cells['A1'].className.includes('battleship taken')).toBe(true);
       expect(gameboard.cells['B1'].className.includes('battleship')).toBe(true);
       expect(gameboard.cells['C1'].className.includes('battleship')).toBe(true);
@@ -54,8 +41,8 @@ describe('Gameboard class', () => {
     })
 
     it('places a submarine (3 cells) on the board', () => {
-      let submarine = new Ship('submarine', 3);
-      gameboard.placeShip('D2', submarine);
+      let submarineMock = { name: 'submarine', length: 3 };
+      gameboard.placeShip('D2', submarineMock);
       expect(gameboard.cells['D2'].className.includes('submarine')).toBe(true);
       expect(gameboard.cells['E2'].className.includes('submarine')).toBe(true);
       expect(gameboard.cells['F2'].className.includes('submarine taken')).toBe(true);
@@ -63,5 +50,28 @@ describe('Gameboard class', () => {
     })
   })
 
+  describe('receiveAttack()', () => {
+    const gameboard = new Gameboard();
+    const shipMock = jest.fn(() => {
+      return { name: 'battleship', length: 4, hit() { this.hits++ }, hits: 0 };
+    })()
+    gameboard.placeShip('A1', shipMock);
+    // Spy to see if hit() is called on the shipMock
+    const hitSpy = jest.spyOn(shipMock, 'hit');
+
+    it('sends hit to a ship if attack is on target (1)',  () => {
+      gameboard.receiveAttack('A1');
+      expect(hitSpy).toHaveBeenCalledTimes(1)
+    })
+
+    it('sends hit to a ship if attack is on target (2)', () => {
+      gameboard.receiveAttack('C1');
+      expect(hitSpy).toHaveBeenCalledTimes(1)
+    }) 
+
+    it('saves coordinate if attack is a miss', () => {
+      gameboard.receiveAttack('B2');
+      expect(gameboard.misses.includes('B2')).toBe(true);
+    });
 
 });

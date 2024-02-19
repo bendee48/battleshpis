@@ -2,6 +2,8 @@ class Gameboard {
   constructor() {
     this.board = this.createBoard();
     this.cells = this.#createCellDict();
+    this.ships = {};
+    this.misses = [];
   }
 
   /**
@@ -30,19 +32,30 @@ class Gameboard {
    * @param {object} ship - A Ship object.
    */
   placeShip(coord, ship) {
+    // Keep track of ships placed
+    this.ships[ship.name] = ship;
     // Fill cells to the ships length
     for (let i = 0; i < ship.length; i++) {
-      // Mark cell as taken
+      // Mark cell as taken & add class name
       this.cells[coord].classList.add(ship.name, 'taken');
+      // Add ships name to cell
+      this.cells[coord].dataset.shipName = ship.name;
       // Create coord for the next letter (horizontal movement)
       let [letter, num] = coord.split('');
       coord = String.fromCharCode(letter.charCodeAt() + 1) + num;
     }
   }
 
-  // receiveAttack() {
-  //   return 1;
-  // }
+  receiveAttack(coord) {
+    const divElement = this.cells[coord];
+
+    if (divElement.className.includes('taken')) {
+      let shipName = divElement.dataset.shipName;
+      this.ships[shipName].hit();
+    } else {
+      this.misses.push(coord);
+    }
+  } 
 
   /**
    * Creates a coordinate.
