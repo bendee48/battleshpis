@@ -66,17 +66,17 @@ describe('Gameboard class', () => {
 
   describe('receiveAttack()', () => {
     const gameboard = new Gameboard();
-    const shipMock = new ShipMock('battleship', 4)
-    gameboard.placeShip('A1', shipMock);
+    const battleshipMock = new ShipMock('battleship', 4)
+    gameboard.placeShip('A1', battleshipMock);
 
     it('sends hit to a ship if attack is on target',  () => {
       gameboard.receiveAttack('A1');
-      expect(shipMock.hit).toHaveBeenCalledTimes(1);
+      expect(battleshipMock.hit).toHaveBeenCalledTimes(1);
     })
 
     it('sends hit to a ship if attack is on target a second time', () => {
       gameboard.receiveAttack('B1');
-      expect(shipMock.hit).toHaveBeenCalledTimes(1)
+      expect(battleshipMock.hit).toHaveBeenCalledTimes(1)
     }) 
 
     it('saves coordinate if attack is a miss', () => {

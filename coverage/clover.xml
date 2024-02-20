@@ -1,52 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1708367328002" clover="3.2.0">
-  <project timestamp="1708367328002" name="All files">
-    <metrics statements="40" coveredstatements="32" conditionals="2" coveredconditionals="2" methods="13" coveredmethods="7" elements="55" coveredelements="41" complexity="0" loc="40" ncloc="40" packages="1" files="2" classes="2"/>
-    <file name="gameboard.js" path="/Users/bendee/JavaScript/battleships/src/gameboard.js">
-      <metrics statements="32" coveredstatements="32" conditionals="2" coveredconditionals="2" methods="7" coveredmethods="7"/>
-      <line num="3" count="4" type="stmt"/>
-      <line num="4" count="4" type="stmt"/>
-      <line num="5" count="4" type="stmt"/>
-      <line num="6" count="4" type="stmt"/>
-      <line num="15" count="4" type="stmt"/>
-      <line num="16" count="4" type="stmt"/>
-      <line num="18" count="4" type="stmt"/>
-      <line num="19" count="40" type="stmt"/>
-      <line num="20" count="400" type="stmt"/>
-      <line num="21" count="400" type="stmt"/>
-      <line num="25" count="4" type="stmt"/>
-      <line num="36" count="4" type="stmt"/>
-      <line num="38" count="4" type="stmt"/>
-      <line num="40" count="15" type="stmt"/>
-      <line num="42" count="15" type="stmt"/>
-      <line num="44" count="15" type="stmt"/>
-      <line num="45" count="15" type="stmt"/>
-      <line num="55" count="7" type="stmt"/>
-      <line num="58" count="7" type="cond" truecount="2" falsecount="0"/>
-      <line num="59" count="6" type="stmt"/>
-      <line num="61" count="6" type="stmt"/>
-      <line num="64" count="1" type="stmt"/>
-      <line num="69" count="2" type="stmt"/>
-      <line num="81" count="400" type="stmt"/>
-      <line num="82" count="400" type="stmt"/>
-      <line num="93" count="400" type="stmt"/>
-      <line num="94" count="400" type="stmt"/>
-      <line num="96" count="400" type="stmt"/>
-      <line num="98" count="400" type="stmt"/>
-      <line num="108" count="4" type="stmt"/>
-      <line num="109" count="400" type="stmt"/>
-      <line num="110" count="400" type="stmt"/>
-    </file>
-    <file name="ship.js" path="/Users/bendee/JavaScript/battleships/src/ship.js">
-      <metrics statements="8" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="0"/>
-      <line num="3" count="0" type="stmt"/>
-      <line num="4" count="0" type="stmt"/>
-      <line num="5" count="0" type="stmt"/>
-      <line num="9" count="0" type="stmt"/>
-      <line num="13" count="0" type="stmt"/>
-      <line num="17" count="0" type="stmt"/>
-      <line num="21" count="0" type="stmt"/>
-      <line num="25" count="0" type="stmt"/>
+<coverage generated="1708389552935" clover="3.2.0">
+  <project timestamp="1708389552935" name="All files">
+    <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1" elements="2" coveredelements="2" complexity="0" loc="1" ncloc="1" packages="1" files="1" classes="1"/>
+    <file name="player.js" path="/Users/bendee/JavaScript/battleships/src/player.js">
+      <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <line num="8" count="1" type="stmt"/>
     </file>
   </project>
 </coverage>

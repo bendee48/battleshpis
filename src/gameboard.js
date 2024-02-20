@@ -65,6 +65,11 @@ class Gameboard {
     }
   }
 
+  /**
+   * Checks to see if all ships have been sunk.
+   * 
+   * @returns {Boolean} True if all ships are sunk, otherwise false
+   */
   allSunk() {
     return Object.entries(this.ships).every(([_, ship]) => ship.isSunk());
   }
