@@ -1,28 +1,15 @@
+/**
+   * Represents a game board.
+   *
+   * @param {string} name - Name of the game board
+   */
 class Gameboard {
-  constructor() {
-    this.board = this.createBoard();
+  constructor(name) {
+    this.name = name;
+    this.board = this.#createBoard();
     this.cells = this.#createCellDict();
     this.ships = {};
     this.misses = [];
-  }
-
-  /**
-   * Creates a game board DOM element with a 10x10 grid, made up of individual cells.
-   *
-   * @returns {HTMLElement} The generated game board element.
-   */
-  createBoard() {
-    const board = document.createElement('div');
-    board.classList.add('board');
-
-    for (let i = 1; i < 11; i++) {
-      for (let j = 0; j < 10; j++) {
-        const coord = this.#createCoordinate(i, j);
-        board.appendChild(this.#createCell(coord));
-      }
-    }
-
-    return board;
   }
 
   /**
@@ -72,6 +59,25 @@ class Gameboard {
    */
   allSunk() {
     return Object.entries(this.ships).every(([_, ship]) => ship.isSunk());
+  }
+
+  /**
+   * Creates a game board DOM element with a 10x10 grid, made up of individual cells.
+   * @private
+   * @returns {HTMLElement} The generated game board element.
+   */
+  #createBoard() {
+    const board = document.createElement('div');
+    board.classList.add(this.name, 'board');
+
+    for (let i = 1; i < 11; i++) {
+      for (let j = 0; j < 10; j++) {
+        const coord = this.#createCoordinate(i, j);
+        board.appendChild(this.#createCell(coord));
+      }
+    }
+
+    return board;
   }
 
   /**
