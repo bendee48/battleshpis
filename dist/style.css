@@ -1,9 +1,12 @@
-/* testing */
+/* Main Styling */
+
+/* Board */
 
 .board {
   width: 400px;
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 20px;
 }
 
 .cell {
@@ -13,6 +16,24 @@
   border: 1px solid black;
 }
 
+/* Ship */
+
 .destroyer {
   background-color: green;
+}
+
+.carrier {
+  background-color: yellow;
+}
+
+.patrol {
+  background-color: blue;
+}
+
+.battleship {
+  background-color: red;
+}
+
+.submarine {
+  background-color: purple;
 }

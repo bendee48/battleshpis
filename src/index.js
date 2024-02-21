@@ -1,2 +1,4 @@
-console.log('hello my there')
+import game from './game';
+
+
 
