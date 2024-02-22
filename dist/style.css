@@ -1,4 +1,16 @@
+/* Default */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
 /* Main Styling */
+
+:root {
+  --grey-miss: rgba(105,105,105, .4);
+}
 
 /* Board */
 
@@ -15,6 +27,22 @@
   height: 40px;
   border: 1px solid black;
 }
+
+.ai-board .cell {
+  /* background-color: #fff; */
+}
+
+.cell.hit {
+  background-image: url('img/milker_X_icon.svg');
+  background-color: var(--grey-miss);
+  pointer-events: none;
+}
+
+.cell.miss {
+  background-color: var(--grey-miss);
+  pointer-events: none;
+}
+
 
 /* Ship */
 

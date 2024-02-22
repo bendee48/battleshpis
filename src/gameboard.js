@@ -46,9 +46,17 @@ class Gameboard {
       let shipName = divElement.dataset.shipName;
       // record hit on ship
       this.ships[shipName].hit();
+      // add .hit class to cell
+      this.cells[coord].classList.add('hit');
+      // return true to indicate a hit
+      return true;
     } else {
       // track misses
       this.misses.push(coord);
+      // add .miss class to cell
+      this.cells[coord].classList.add('miss');
+      // return false to indicate a miss
+      return false;
     }
   }
 
