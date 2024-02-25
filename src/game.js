@@ -30,7 +30,7 @@ const game = (() => {
   const submarine = new Ship('submarine', 3);
   const patrol = new Ship('patrol', 2);
 
-  playerBoard.placeShip('A1', carrier);
+  playerBoard.placeShip('H1', carrier);
   playerBoard.placeShip('C3', battleship);
   playerBoard.placeShip('D5', destroyer);
   playerBoard.placeShip('B7', submarine);

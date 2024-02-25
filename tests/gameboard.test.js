@@ -62,6 +62,23 @@ describe('Gameboard class', () => {
       expect(gameboard.cells['F2'].className.includes('submarine taken')).toBe(true);
       expect(gameboard.cells['G2'].className.includes('submarine')).not.toBe(true);
     })
+
+    it('only places a ship on a valid coordinate', () => {
+      const carrierMock = new ShipMock('carrier', 5);
+      gameboard.placeShip('H1', carrierMock);
+      expect(gameboard.cells['H1'].className.includes('carrier')).not.toBe(true);
+      expect(gameboard.cells['I1'].className.includes('carrier')).not.toBe(true);
+      expect(gameboard.cells['J1'].className.includes('carrier taken')).not.toBe(true);
+    })
+
+    it('places a ship if there\'s just enough space', () => {
+      const battleshipMock = new ShipMock('battleship', 4);
+      gameboard.placeShip('G1', battleshipMock);
+      expect(gameboard.cells['G1'].className.includes('battleship')).toBe(true);
+      expect(gameboard.cells['H1'].className.includes('battleship')).toBe(true);
+      expect(gameboard.cells['I1'].className.includes('battleship')).toBe(true);
+      expect(gameboard.cells['J1'].className.includes('battleship taken')).toBe(true);
+    })
   })
 
   describe('receiveAttack()', () => {

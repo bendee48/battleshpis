@@ -19,8 +19,10 @@ class Gameboard {
    * @param {object} ship - A Ship object.
    */
   placeShip(coord, ship) {
-    // Keep track of ships placed
-    this.ships[ship.name] = ship;
+    // check validity of ship placement
+    if (!this.#validPlace(coord, ship)) {
+      return false;
+    }
     // Fill cells to the ships length
     for (let i = 0; i < ship.length; i++) {
       // Mark cell as taken & add class name
@@ -31,6 +33,10 @@ class Gameboard {
       let [letter, num] = coord.split('');
       coord = String.fromCharCode(letter.charCodeAt() + 1) + num;
     }
+
+    // Keep track of ships placed on board
+    this.ships[ship.name] = ship;
+    return true;
   }
 
   /**
@@ -86,6 +92,13 @@ class Gameboard {
     }
 
     return board;
+  }
+
+  #validPlace(coord, ship) {
+    const letters = 'ABCDEFGHIJ';
+    const letter = coord[0];
+    const index = letters.indexOf(letter);
+    return index + ship.length <= letters.length;
   }
 
   /**

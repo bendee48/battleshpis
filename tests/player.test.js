@@ -14,7 +14,7 @@ describe('Player', () => {
     });
   });
 
-  describe('convertChosenMove()', () => {
+  describe('convertPlayerMove()', () => {
     it('returns the players chosen attack of A1', () => {
       let eventMock = {target: {dataset: {coordinate: 'A1'}}};
       expect(player.convertPlayerMove(eventMock)).toBe('A1');
