@@ -51,28 +51,28 @@ const game = (() => {
 
   function handlePlayerTurn(event) {
     if (event && currentPlayer === 'human') {
-      const coord = humanPlayer.convertChosenMove(event);
+      const coord = humanPlayer.convertPlayerMove(event);
       const hit = aiBoard.receiveAttack(coord);
       // if a miss move to AI turn
       if (!hit) {
         currentPlayer = 'ai';
         handleAITurn();
       }
-      console.log(aiBoard, aiBoard.allSunk())
+      console.log(aiBoard.allSunk(),'ai')
     }
   }
 
   function handleAITurn() {
-    console.log('Now im in AI turn')
     if (currentPlayer === 'ai') {
       const coord = aiPlayer.getMove();
       const hit = playerBoard.receiveAttack(coord);
-      // reopens handlePlayerTurn
+      console.log(playerBoard.allSunk(), 'player')
+      // switches to handlePlayerTurn() if no hit
       if (!hit) {
         currentPlayer = 'human';
         return;
       }
-      // or gives Ai another go if a hit is a success
+      // or gives AI another go if a hit is a success
       handleAITurn();
     }
   }
