@@ -1,3 +1,5 @@
+import Ship from './ship';
+
 /**
    * Represents a game board.
    *
@@ -20,9 +22,10 @@ class Gameboard {
    */
   placeShip(coord, ship) {
     // check validity of ship placement
-    if (!this.#validPlace(coord, ship)) {
+    if (!this.#validPlacement(coord, ship)) {
       return false;
     }
+    
     // Fill cells to the ships length
     for (let i = 0; i < ship.length; i++) {
       // Mark cell as taken & add class name
@@ -30,13 +33,33 @@ class Gameboard {
       // Add ships name to cell
       this.cells[coord].dataset.shipName = ship.name;
       // Create coord for the next letter (horizontal movement)
-      let [letter, num] = coord.split('');
+      let [letter, num] = this.#splitCoordinate(coord);
       coord = String.fromCharCode(letter.charCodeAt() + 1) + num;
     }
 
     // Keep track of ships placed on board
     this.ships[ship.name] = ship;
     return true;
+  }
+
+  placeShipsRandomly() {
+    const carrierAI = new Ship('carrier', 5);
+    const battleshipAI = new Ship('battleship', 4);
+    const destroyerAI = new Ship('destroyer', 3);
+    const submarineAI = new Ship('submarine', 3);
+    const patrolAI = new Ship('patrol', 2);
+    const ships = [carrierAI, battleshipAI, destroyerAI, submarineAI, patrolAI];
+    
+    // grab a random coordinate and place ship if it's valid, if not try again
+    for (let i = 0; i < ships.length; i++) {
+      let index = Math.floor(Math.random() * this.cellCoordinates().length);
+      let coord = this.cellCoordinates()[index];
+      if (this.#validPlacement(coord, ships[i])) {
+        this.placeShip(coord, ships[i]);
+      } else {
+        i--;
+      }
+    }
   }
 
   /**
@@ -76,6 +99,15 @@ class Gameboard {
   }
 
   /**
+   * Returns a list of all the board coordinates.
+   * 
+   * @return {Array.<string>} An array of the boards cell coordinates.
+   */
+  cellCoordinates() {
+    return Object.keys(this.cells);
+  }
+
+  /**
    * Creates a game board DOM element with a 10x10 grid, made up of individual cells.
    * @private
    * @returns {HTMLElement} The generated game board element.
@@ -94,11 +126,65 @@ class Gameboard {
     return board;
   }
 
-  #validPlace(coord, ship) {
+  /**
+   * Checks if a ship can be placed from the given coordinate
+   * 
+   * @private
+   * @param {string} coord - The starting coordinate for placing the ship (e.g., "A1").
+   * @param {object} ship - The Ship object containing information about the ship.
+   * @returns {boolean} - True if the placement is valid, false otherwise.
+   */
+  #validPlacement(coord, ship) {
+    return this.#enoughSpace(coord, ship) && this.#freeCells(coord, ship);
+  }
+
+  /**
+   * Checks if there are enough free cells from the given coordinate
+   * for the ship to be placed (horizontally).
+   * 
+   * @private
+   * @param {string} coord - The starting coordinate for placing the ship (e.g., "A1").
+   * @param {object} ship - The Ship object containing information about the ship.
+   * @returns {boolean} - True if there is enough space for placing the ship, false otherwise.
+   */
+  #enoughSpace(coord, ship) {
     const letters = 'ABCDEFGHIJ';
     const letter = coord[0];
     const index = letters.indexOf(letter);
-    return index + ship.length <= letters.length;
+    const spaceNeeded = index + ship.length;
+    return spaceNeeded <= letters.length;
+  }
+
+  /**
+   * Checks if each cell from the given coordinate is free for placing a ship.
+   * 
+   * @private
+   * @param {string} coord - The starting coordinate for placing the ship (e.g., "A1").
+   * @param {object} ship - The Ship object containing information about the ship.
+   * @returns {boolean} - True if the cells are free for placing the ship, false otherwise.
+   */
+  #freeCells(coord, ship) {
+    for (let i = 0; i < ship.length; i++) {
+      if (this.cells[coord].className.includes('taken')) return false;
+      // Create coord for the next letter (horizontal movement)
+      let [letter, num] = this.#splitCoordinate(coord);
+      coord = String.fromCharCode(letter.charCodeAt() + 1) + num;
+    }
+    return true;
+  }
+
+  /**
+   * Splits a coordinate into it's letter and number.
+   * 
+   * @private
+   * @param {string} coord - A coordinate eg 'A1'.
+   * @returns {Array} An array containing the letter and number.
+   * @returns {string} 0 - The letter.
+   * @returns {string} 1 - The number.
+   */
+  #splitCoordinate(coord) {
+    const [_,letter, num] = coord.match(/([A-J])(\d+)/);
+    return [letter, num];
   }
 
   /**

@@ -46,12 +46,12 @@ describe('Gameboard class', () => {
 
     it('places a battleship (4 cells) on the board', () => {
       const battleshipMock = new ShipMock('battleship', 4)
-      gameboard.placeShip('A1', battleshipMock);
-      expect(gameboard.cells['A1'].className.includes('battleship taken')).toBe(true);
-      expect(gameboard.cells['B1'].className.includes('battleship')).toBe(true);
-      expect(gameboard.cells['C1'].className.includes('battleship')).toBe(true);
-      expect(gameboard.cells['D1'].className.includes('battleship')).toBe(true);
-      expect(gameboard.cells['E1'].className.includes('battleship')).not.toBe(true);
+      gameboard.placeShip('A10', battleshipMock);
+      expect(gameboard.cells['A10'].className.includes('battleship taken')).toBe(true);
+      expect(gameboard.cells['B10'].className.includes('battleship')).toBe(true);
+      expect(gameboard.cells['C10'].className.includes('battleship')).toBe(true);
+      expect(gameboard.cells['D10'].className.includes('battleship')).toBe(true);
+      expect(gameboard.cells['E10'].className.includes('battleship')).not.toBe(true);
     })
 
     it('places a submarine (3 cells) on the board', () => {
@@ -63,7 +63,7 @@ describe('Gameboard class', () => {
       expect(gameboard.cells['G2'].className.includes('submarine')).not.toBe(true);
     })
 
-    it('only places a ship on a valid coordinate', () => {
+    it('only places a ship if there is enough space for it', () => {
       const carrierMock = new ShipMock('carrier', 5);
       gameboard.placeShip('H1', carrierMock);
       expect(gameboard.cells['H1'].className.includes('carrier')).not.toBe(true);
@@ -71,15 +71,30 @@ describe('Gameboard class', () => {
       expect(gameboard.cells['J1'].className.includes('carrier taken')).not.toBe(true);
     })
 
-    it('places a ship if there\'s just enough space', () => {
+    it('only places a ship if the cells are free', () => {
       const battleshipMock = new ShipMock('battleship', 4);
-      gameboard.placeShip('G1', battleshipMock);
-      expect(gameboard.cells['G1'].className.includes('battleship')).toBe(true);
-      expect(gameboard.cells['H1'].className.includes('battleship')).toBe(true);
-      expect(gameboard.cells['I1'].className.includes('battleship')).toBe(true);
-      expect(gameboard.cells['J1'].className.includes('battleship taken')).toBe(true);
+      const submarineMock = new ShipMock('submarine', 3);
+      gameboard.placeShip('A1', battleshipMock);
+      gameboard.placeShip('B1', submarineMock);
+      expect(gameboard.cells['A1'].className.includes('battleship')).toBe(true);
+      expect(gameboard.cells['B1'].className.includes('battleship')).toBe(true);
+      expect(gameboard.cells['B1'].className.includes('submarine')).not.toBe(true);
+      expect(gameboard.cells['C1'].className.includes('battleship')).toBe(true);
+      expect(gameboard.cells['C1'].className.includes('submarine')).not.toBe(true);
+      expect(gameboard.cells['D1'].className.includes('battleship')).toBe(true);
+      expect(gameboard.cells['D1'].className.includes('submarine')).not.toBe(true);
     })
   })
+
+  describe('placeShipsRandomly()', () => {
+    const gameboard = new Gameboard();
+
+    it('places all ships randomly on the board', () => {
+      gameboard.placeShipsRandomly();
+      // check Ship instances are added to .ships object
+      expect(Object.keys(gameboard.ships).length).toBe(5);
+    })
+  });
 
   describe('receiveAttack()', () => {
     const gameboard = new Gameboard();

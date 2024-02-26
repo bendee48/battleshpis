@@ -55,10 +55,11 @@ class Player {
   /**
    * Uses Gameboard to grab an array of coordinates representing all cells on the gameboard.
    * @private
-   * @returns {string[]} An array of string coordinates.
+   * @returns {Array.<string>} An array of string coordinates.
    */
   #coordinates() {
-    return Object.keys(new Gameboard().cells);
+    const gameboard = new Gameboard();
+    return gameboard.cellCoordinates();
   }
 }
 

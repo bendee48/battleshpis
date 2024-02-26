@@ -24,30 +24,36 @@ const game = (() => {
   })
 
   // Placing player ships
-  const carrier = new Ship('carrier', 5);
-  const battleship = new Ship('battleship', 4);
-  const destroyer = new Ship('destroyer', 3);
-  const submarine = new Ship('submarine', 3);
-  const patrol = new Ship('patrol', 2);
+  // const carrier = new Ship('carrier', 5);
+  // const battleship = new Ship('battleship', 4);
+  // const destroyer = new Ship('destroyer', 3);
+  // const submarine = new Ship('submarine', 3);
+  // const patrol = new Ship('patrol', 2);
 
-  playerBoard.placeShip('H1', carrier);
-  playerBoard.placeShip('C3', battleship);
-  playerBoard.placeShip('D5', destroyer);
-  playerBoard.placeShip('B7', submarine);
-  playerBoard.placeShip('G9', patrol);
+  // playerBoard.placeShip('A3', carrier);
+  // playerBoard.placeShip('F3', battleship);
+  // playerBoard.placeShip('D5', destroyer);
+  // playerBoard.placeShip('H10', submarine);
+  // playerBoard.placeShip('G9', patrol);
+
+  playerBoard.placeShipsRandomly();
 
   // Placing computer ships
-  const carrierAI = new Ship('carrier', 5);
-  const battleshipAI = new Ship('battleship', 4);
-  const destroyerAI = new Ship('destroyer', 3);
-  const submarineAI = new Ship('submarine', 3);
-  const patrolAI = new Ship('patrol', 2);
+  // const carrierAI = new Ship('carrier', 5);
+  // const battleshipAI = new Ship('battleship', 4);
+  // const destroyerAI = new Ship('destroyer', 3);
+  // const submarineAI = new Ship('submarine', 3);
+  // const patrolAI = new Ship('patrol', 2);
 
-  aiBoard.placeShip('A2', carrierAI);
-  aiBoard.placeShip('C3', battleshipAI);
-  aiBoard.placeShip('D5', destroyerAI);
-  aiBoard.placeShip('B7', submarineAI);
-  aiBoard.placeShip('G9', patrolAI);
+  // aiBoard.placeShip('A2', carrierAI);
+  // aiBoard.placeShip('C3', battleshipAI);
+  // aiBoard.placeShip('D5', destroyerAI);
+  // aiBoard.placeShip('B7', submarineAI);
+  // aiBoard.placeShip('G9', patrolAI);
+
+  aiBoard.placeShipsRandomly();
+
+  console.log(aiBoard)
 
   function handlePlayerTurn(event) {
     if (event && currentPlayer === 'human') {
