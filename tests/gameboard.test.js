@@ -42,7 +42,7 @@ describe('Gameboard class', () => {
   })
 
   describe('placeShip()', () => {
-    const gameboard = new Gameboard();
+    let gameboard = new Gameboard();
 
     it('places a battleship (4 cells) on the board', () => {
       const battleshipMock = new ShipMock('battleship', 4)
@@ -72,6 +72,7 @@ describe('Gameboard class', () => {
     })
 
     it('only places a ship if the cells are free', () => {
+      gameboard = new Gameboard();
       const battleshipMock = new ShipMock('battleship', 4);
       const submarineMock = new ShipMock('submarine', 3);
       gameboard.placeShip('A1', battleshipMock);
@@ -83,6 +84,15 @@ describe('Gameboard class', () => {
       expect(gameboard.cells['C1'].className.includes('submarine')).not.toBe(true);
       expect(gameboard.cells['D1'].className.includes('battleship')).toBe(true);
       expect(gameboard.cells['D1'].className.includes('submarine')).not.toBe(true);
+    })
+
+    it('only places the same ship once', () => {
+      gameboard = new Gameboard()
+      const submarineMockOne = new ShipMock('submarine', 3);
+      const submarineMockTwo = new ShipMock('submarine', 3);
+      gameboard.placeShip('A1', submarineMockOne);
+      gameboard.placeShip('H5', submarineMockTwo);
+      expect(Object.keys(gameboard.ships).length).toBe(1);
     })
   })
 

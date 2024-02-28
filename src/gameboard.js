@@ -135,7 +135,9 @@ class Gameboard {
    * @returns {boolean} - True if the placement is valid, false otherwise.
    */
   #validPlacement(coord, ship) {
-    return this.#enoughSpace(coord, ship) && this.#freeCells(coord, ship);
+    return this.#enoughSpace(coord, ship) && 
+           this.#freeCells(coord, ship)   &&
+           this.#firstShip(ship);
   }
 
   /**
@@ -153,6 +155,10 @@ class Gameboard {
     const index = letters.indexOf(letter);
     const spaceNeeded = index + ship.length;
     return spaceNeeded <= letters.length;
+  }
+
+  #firstShip(ship) {
+    return !this.ships[ship.name];
   }
 
   /**
