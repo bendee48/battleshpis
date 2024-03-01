@@ -57,69 +57,9 @@ const game = (() => {
       // or gives AI another go if a hit is a success
       handleAITurn();
     }
-  }
-  
-  // testing drag drop
-  // Object.values(playerBoard.cells).forEach(cell => {
-  //   cell.addEventListener('dragover', handleDragOver);
-  //   cell.addEventListener('dragenter', handleDragEnter);
-  //   cell.addEventListener('dragleave', handleDragLeave);
-  //   cell.addEventListener('drop', handleDrop);
-  // })
+  } 
 
-  // const destroyer = document.getElementById('destroyer-draggable');
-  // const carrier = document.getElementById('carrier-draggable');
-  // destroyer.addEventListener('dragstart', handleDragStart);
-  // destroyer.addEventListener('dragend', handleDragEnd);
-  // carrier.addEventListener('dragstart', handleDragStart);
-
-  // // Use global to hold dragged data, was running into issues reusing dataTransfer.getData() multiple times
-  // let draggedData;
-  
-  // function handleDrop(event) {
-  //   event.preventDefault();
-  //   // remove valid borders
-  //   event.target.classList.remove('valid-place');
-  //   event.target.classList.remove('invalid-place');
-  //   const ship = new Ship(draggedData.name, draggedData.length);
-  //   const coord = event.target.dataset.coordinate;
-  //   playerBoard.placeShip(coord, ship);
-  // }
-
-  // function handleDragStart(event) {
-  //   event.dataTransfer.effectAllowed = 'move';
-  //   draggedData = {
-  //     name: event.target.dataset.name,
-  //     length: Number(event.target.dataset.length)
-  //   }
-  // }
-
-  // function handleDragEnter(event) {
-  //   event.preventDefault();
-  //   const tempShip = new Ship(draggedData.name, draggedData.length);
-  //   const coord = event.target.dataset.coordinate;
-  //   if (playerBoard.validPlacement(coord, tempShip)) {
-  //     event.target.classList.add('valid-place');
-  //   } else {
-  //     event.target.classList.add('invalid-place')
-  //   }
-  // }
-
-  // function handleDragOver(event) {
-  //   event.preventDefault();
-  // }
-
-  // function handleDragLeave(event) {
-  //   event.preventDefault();
-  //   event.target.classList.remove('valid-place');
-  //   event.target.classList.remove('invalid-place');
-  // }
-
-  // function handleDragEnd(event) {
-  //   event.preventDefault();
-  //   console.log(event.target.classList.add('clear'))
-  // }
-
+  console.log([aiBoard])
 })();
 
 export default game;

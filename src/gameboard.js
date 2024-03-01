@@ -1,11 +1,20 @@
 import Ship from './ship';
 
 /**
-   * Represents a game board.
-   *
-   * @param {string} name - Name of the game board
-   */
+ * Represents a game board.
+ *
+ * @param {string} name - Name of the game board
+ */
 class Gameboard {
+  /**
+   * @constructor
+   * @type {object} board - HTML element of gameboard and cells
+   * @type {object} cells - Dictionary of cell coordinates and their corresponding HTML element
+   *                        ie {'A1': <div class="cell"></div>}
+   * @type {object} ships - Dictionary of ship name and its corresponding Ship object
+   *                        ie {'battleship': {name: 'battleship', length: 4}}}
+   * @type {Array<string>} misses - List of coordinates, attacked, that missed eg ['A1','D6']
+   */
   constructor(name) {
     this.name = name;
     this.board = this.#createBoard();
@@ -19,6 +28,7 @@ class Gameboard {
    * 
    * @param {string} coord - Coordinate to place head of ship.
    * @param {object} ship - A Ship object.
+   * @return {boolean} - Returns true if ship is placed, false otherwise
    */
   placeShip(coord, ship) {
     // check validity of ship placement
@@ -70,6 +80,7 @@ class Gameboard {
    * Handles an attack on the board.
    * 
    * @param {string} coord - Coordinate of attack.
+   * @return {boolean} - Returns true if attack is a hit, false otherwise
    */
   receiveAttack(coord) {
     const divElement = this.cells[coord];
@@ -105,7 +116,7 @@ class Gameboard {
   /**
    * Returns a list of all the board coordinates.
    * 
-   * @return {Array.<string>} An array of the boards cell coordinates.
+   * @return {Array<string>} An array of the boards cell coordinates.
    */
   cellCoordinates() {
     return Object.keys(this.cells);
@@ -130,7 +141,7 @@ class Gameboard {
   /**
    * Creates a game board DOM element with a 10x10 grid, made up of individual cells.
    * @private
-   * @returns {HTMLElement} The generated game board element.
+   * @returns {HTMLElement} The generated game board HTML element.
    */
   #createBoard() {
     const board = document.createElement('div');
@@ -224,7 +235,7 @@ class Gameboard {
    * 
    * @private
    * @param {string} coord - The coordinate of the cell, e.g., 'A1'.
-   * @returns {HTMLElement} The generated cell element.
+   * @returns {HTMLElement} The generated cell HTML element.
    */
   #createCell(coord) {
     const cell = document.createElement('div');
@@ -239,7 +250,8 @@ class Gameboard {
    * Creates a dictionary for the gameboard cells.
    * 
    * @private
-   * @returns {Object} A dictionary of coordinate keys mapped to their HTML element.
+   * @returns {Object} - A dictionary of coordinate keys mapped to their HTML element.
+   *                     eg. {'A1': <div class="cell"><div/>}
    */
   #createCellDict() {
     return [...this.board.children].reduce((dict, cell) => {
