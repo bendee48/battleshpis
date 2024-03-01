@@ -13,9 +13,9 @@ const dragEventAPI = (() => {
   // hold the draggable elements from DOM
   let destroyerDraggable;
   let carrierDraggable;
-  // let battleshipDraggable;
-  // let patrolDraggable;
-  // let submarineDraggable;
+  let battleshipDraggable;
+  let patrolDraggable;
+  let submarineDraggable;
 
   /**
    * Setups the module for use.
@@ -37,9 +37,9 @@ const dragEventAPI = (() => {
   const _grabDraggables = () => {
     destroyerDraggable = document.getElementById('destroyer-draggable');
     carrierDraggable = document.getElementById('carrier-draggable');
-    // battleshipDraggable = document.getElementById('battleship-draggable');
-    // patrolDraggable = document.getElementById('patrol-draggable');
-    // submarineDraggable = document.getElementById('submarine-draggable');
+    battleshipDraggable = document.getElementById('battleship-draggable');
+    patrolDraggable = document.getElementById('patrol-draggable');
+    submarineDraggable = document.getElementById('submarine-draggable');
   }
 
   /**
@@ -61,12 +61,12 @@ const dragEventAPI = (() => {
     destroyerDraggable.addEventListener('dragend', _handleDragEnd);
     carrierDraggable.addEventListener('dragstart', _handleDragStart);
     carrierDraggable.addEventListener('dragend', _handleDragEnd);
-    // submarineDraggable.addEventListener('dragstart', _handleDragStart);
-    // submarineDraggable.addEventListener('dragend', _handleDragEnd);
-    // patrolDraggable.addEventListener('dragstart', _handleDragStart);
-    // patrolDraggable.addEventListener('dragend', _handleDragEnd);
-    // battleshipDraggable.addEventListener('dragstart', _handleDragStart);
-    // battleshipDraggable.addEventListener('dragend', _handleDragEnd);
+    submarineDraggable.addEventListener('dragstart', _handleDragStart);
+    submarineDraggable.addEventListener('dragend', _handleDragEnd);
+    patrolDraggable.addEventListener('dragstart', _handleDragStart);
+    patrolDraggable.addEventListener('dragend', _handleDragEnd);
+    battleshipDraggable.addEventListener('dragstart', _handleDragStart);
+    battleshipDraggable.addEventListener('dragend', _handleDragEnd);
   }
   
   /**

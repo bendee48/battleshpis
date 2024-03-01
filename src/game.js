@@ -2,6 +2,7 @@ import Player from './player';
 import Gameboard from './gameboard';
 import DOMController from './domController';
 import dragEventAPI from './dragEventAPI';
+import DOMBuilder from './domBuilder'
 
 // Main game loop
 const game = (() => {
@@ -14,6 +15,7 @@ const game = (() => {
 
   DOMController.displayBoard(playerBoard);
   DOMController.displayBoard(aiBoard);
+  DOMController.displayDraggables();
 
   dragEventAPI.setup(playerBoard);
 
@@ -40,7 +42,6 @@ const game = (() => {
         currentPlayer = 'ai';
         handleAITurn();
       }
-      console.log(aiBoard.allSunk(),'ai')
     }
   }
 
@@ -59,7 +60,6 @@ const game = (() => {
     }
   } 
 
-  console.log([aiBoard])
 })();
 
 export default game;
