@@ -16,6 +16,23 @@ class Ship {
   }
 
   /**
+   * Returns an array of information on the available ships
+   *
+   * @static
+   * @return {Array<Array<string>|<number>>} - Information of the ships names and lengths
+   *                                           eg [['ship', 3],['boaty', 5]]
+   */
+  static shipInfo() {
+    return [
+            ['carrier', 5],
+            ['battleship', 4],
+            ['destroyer', 3],
+            ['submarine', 3],
+            ['patrol', 2]
+           ]
+  }
+
+  /**
    * Gets ship name.
    *
    * @return {string} - Name of the ship

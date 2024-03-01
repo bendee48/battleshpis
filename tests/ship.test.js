@@ -6,35 +6,43 @@ describe('Ship Class', () => {
   const submarine = new Ship('submarine', 3);
   const patrolBoat = new Ship('patrolBoat', 2);
 
+  
   describe('.name', () => {
     it('returns the name of a battleship', () => {
       expect(battleship.name).toBe('battleship');
     })
-
+    
     it('returns the name of a submarine', () => {
       expect(submarine.name).toBe('submarine');
     })
   })
-
+  
   describe('.length', () => {
     it('returns the length of a battleship', () => {
       expect(battleship.length).toBe(4);
     })
-
+    
     it('returns the length of a submarine', () => {
       expect(submarine.length).toBe(3);
     });
-
+    
     it('returns the length of a patrol boat', () => {
       expect(patrolBoat.length).toBe(2);
     });
   });
-
+  
   describe('.hits', () => {
     it('returns number of hits to ship', () => {
       expect(battleship.hits).toBe(0);
     });
   })
+  
+  describe('Ship.shipInfo()', () => {
+    it('returns information on the available ship types', () => {
+      expect(Ship.shipInfo()[0][0]).toBe('carrier');
+      expect(Ship.shipInfo()[0][1]).toBe(5);
+    })
+  });
 
   describe('hit()', () => {
     it('increases the number of hits a ship has suffered by one', () => {
