@@ -12,6 +12,18 @@
   --grey-miss: rgba(105,105,105, .4);
 }
 
+.valid-place {
+  border: 3px solid rgb(39, 227, 29) !important;
+}
+
+.invalid-place {
+  border: 3px solid red !important;
+}
+
+.draggable.clear * {
+  background: none !important;
+}
+
 /* Board */
 
 .boards-container {
@@ -69,4 +81,20 @@
 
 .submarine {
   background-color: purple;
+}
+
+/* Draggables */
+
+.draggables-container {
+  display: flex;
+  gap: 1em;
+}
+
+.draggable {
+  display: flex;
+}
+
+.draggable .cell {
+  width: 30px;
+  height: 30px;
 }

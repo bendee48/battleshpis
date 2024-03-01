@@ -22,10 +22,9 @@ class Gameboard {
    */
   placeShip(coord, ship) {
     // check validity of ship placement
-    if (!this.#validPlacement(coord, ship)) {
+    if (!this.validPlacement(coord, ship)) {
       return false;
     }
-    
     // Fill cells to the ships length
     for (let i = 0; i < ship.length; i++) {
       // Mark cell as taken & add class name
@@ -42,6 +41,11 @@ class Gameboard {
     return true;
   }
 
+  /**
+   * Places all the ships randomly on the board.
+   * 
+   * @returns {undefined}
+   */
   placeShipsRandomly() {
     const carrierAI = new Ship('carrier', 5);
     const battleshipAI = new Ship('battleship', 4);
@@ -54,7 +58,7 @@ class Gameboard {
     for (let i = 0; i < ships.length; i++) {
       let index = Math.floor(Math.random() * this.cellCoordinates().length);
       let coord = this.cellCoordinates()[index];
-      if (this.#validPlacement(coord, ships[i])) {
+      if (this.validPlacement(coord, ships[i])) {
         this.placeShip(coord, ships[i]);
       } else {
         i--;
@@ -108,6 +112,22 @@ class Gameboard {
   }
 
   /**
+   * Checks if a ship can be placed from the given coordinate
+   * 
+   * @param {string} coord - The starting coordinate for placing the ship (e.g., "A1").
+   * @param {object} ship - The Ship object containing information about the ship.
+   * @returns {boolean} - True if the placement is valid, false otherwise.
+   */
+  validPlacement(coord, ship) {
+    return this.#enoughSpace(coord, ship) && 
+           this.#freeCells(coord, ship)   &&
+           this.#firstShip(ship);
+  }
+
+
+  /** Private Functions **/
+
+  /**
    * Creates a game board DOM element with a 10x10 grid, made up of individual cells.
    * @private
    * @returns {HTMLElement} The generated game board element.
@@ -127,20 +147,6 @@ class Gameboard {
   }
 
   /**
-   * Checks if a ship can be placed from the given coordinate
-   * 
-   * @private
-   * @param {string} coord - The starting coordinate for placing the ship (e.g., "A1").
-   * @param {object} ship - The Ship object containing information about the ship.
-   * @returns {boolean} - True if the placement is valid, false otherwise.
-   */
-  #validPlacement(coord, ship) {
-    return this.#enoughSpace(coord, ship) && 
-           this.#freeCells(coord, ship)   &&
-           this.#firstShip(ship);
-  }
-
-  /**
    * Checks if there are enough free cells from the given coordinate
    * for the ship to be placed (horizontally).
    * 
@@ -157,6 +163,13 @@ class Gameboard {
     return spaceNeeded <= letters.length;
   }
 
+  /**
+   * Checks if ship is the first of it's kind to be added to the list of ships.
+   * 
+   * @private
+   * @param {object} ship - The Ship object containing information about the ship.
+   * @returns {boolean} - True if ship isn't in the list of ships, false otherwise.
+   */
   #firstShip(ship) {
     return !this.ships[ship.name];
   }

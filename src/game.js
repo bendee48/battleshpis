@@ -1,7 +1,7 @@
 import Player from './player';
 import Gameboard from './gameboard';
 import DOMController from './domController';
-import Ship from './ship';
+import dragEventAPI from './dragEventAPI';
 
 // Main game loop
 const game = (() => {
@@ -15,6 +15,8 @@ const game = (() => {
   DOMController.displayBoard(playerBoard);
   DOMController.displayBoard(aiBoard);
 
+  dragEventAPI.setup(playerBoard);
+
   // Adding event listener to ai cells
 
   Array.from(aiBoard.board.childNodes).forEach(cell => {
@@ -23,37 +25,11 @@ const game = (() => {
     })
   })
 
-  // Placing player ships
-  // const carrier = new Ship('carrier', 5);
-  // const battleship = new Ship('battleship', 4);
-  // const destroyer = new Ship('destroyer', 3);
-  // const submarine = new Ship('submarine', 3);
-  // const patrol = new Ship('patrol', 2);
-
-  // playerBoard.placeShip('A3', carrier);
-  // playerBoard.placeShip('F3', battleship);
-  // playerBoard.placeShip('D5', destroyer);
-  // playerBoard.placeShip('H10', submarine);
-  // playerBoard.placeShip('G9', patrol);
-
-  playerBoard.placeShipsRandomly();
-
-  // Placing computer ships
-  // const carrierAI = new Ship('carrier', 5);
-  // const battleshipAI = new Ship('battleship', 4);
-  // const destroyerAI = new Ship('destroyer', 3);
-  // const submarineAI = new Ship('submarine', 3);
-  // const patrolAI = new Ship('patrol', 2);
-
-  // aiBoard.placeShip('A2', carrierAI);
-  // aiBoard.placeShip('C3', battleshipAI);
-  // aiBoard.placeShip('D5', destroyerAI);
-  // aiBoard.placeShip('B7', submarineAI);
-  // aiBoard.placeShip('G9', patrolAI);
-
   aiBoard.placeShipsRandomly();
 
-  console.log(aiBoard)
+  // nothing happens if placed after random, will crash if placed before in placeShipsRandomly()
+  // const patrolAI = new Ship('patrol', 2);
+  // aiBoard.placeShip('G9', patrolAI);
 
   function handlePlayerTurn(event) {
     if (event && currentPlayer === 'human') {
@@ -82,6 +58,68 @@ const game = (() => {
       handleAITurn();
     }
   }
+  
+  // testing drag drop
+  // Object.values(playerBoard.cells).forEach(cell => {
+  //   cell.addEventListener('dragover', handleDragOver);
+  //   cell.addEventListener('dragenter', handleDragEnter);
+  //   cell.addEventListener('dragleave', handleDragLeave);
+  //   cell.addEventListener('drop', handleDrop);
+  // })
+
+  // const destroyer = document.getElementById('destroyer-draggable');
+  // const carrier = document.getElementById('carrier-draggable');
+  // destroyer.addEventListener('dragstart', handleDragStart);
+  // destroyer.addEventListener('dragend', handleDragEnd);
+  // carrier.addEventListener('dragstart', handleDragStart);
+
+  // // Use global to hold dragged data, was running into issues reusing dataTransfer.getData() multiple times
+  // let draggedData;
+  
+  // function handleDrop(event) {
+  //   event.preventDefault();
+  //   // remove valid borders
+  //   event.target.classList.remove('valid-place');
+  //   event.target.classList.remove('invalid-place');
+  //   const ship = new Ship(draggedData.name, draggedData.length);
+  //   const coord = event.target.dataset.coordinate;
+  //   playerBoard.placeShip(coord, ship);
+  // }
+
+  // function handleDragStart(event) {
+  //   event.dataTransfer.effectAllowed = 'move';
+  //   draggedData = {
+  //     name: event.target.dataset.name,
+  //     length: Number(event.target.dataset.length)
+  //   }
+  // }
+
+  // function handleDragEnter(event) {
+  //   event.preventDefault();
+  //   const tempShip = new Ship(draggedData.name, draggedData.length);
+  //   const coord = event.target.dataset.coordinate;
+  //   if (playerBoard.validPlacement(coord, tempShip)) {
+  //     event.target.classList.add('valid-place');
+  //   } else {
+  //     event.target.classList.add('invalid-place')
+  //   }
+  // }
+
+  // function handleDragOver(event) {
+  //   event.preventDefault();
+  // }
+
+  // function handleDragLeave(event) {
+  //   event.preventDefault();
+  //   event.target.classList.remove('valid-place');
+  //   event.target.classList.remove('invalid-place');
+  // }
+
+  // function handleDragEnd(event) {
+  //   event.preventDefault();
+  //   console.log(event.target.classList.add('clear'))
+  // }
+
 })();
 
 export default game;
