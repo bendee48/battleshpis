@@ -28,6 +28,8 @@ const dragEventAPI = (() => {
     _addDragEvents();
   };
 
+  /** Private Functions **/
+
   /**
    * Select draggable elements in the DOM
    * 
@@ -40,6 +42,22 @@ const dragEventAPI = (() => {
     battleshipDraggable = document.getElementById('battleship-draggable');
     patrolDraggable = document.getElementById('patrol-draggable');
     submarineDraggable = document.getElementById('submarine-draggable');
+  }
+
+  /**
+   * An array of the draggable elements
+   * 
+   * @private
+   * @returns {Array<HTMLElement>}
+   */
+  const _draggables = () => {
+    return [
+      destroyerDraggable,
+      carrierDraggable,
+      battleshipDraggable,
+      patrolDraggable,
+      submarineDraggable
+    ];
   }
 
   /**
@@ -57,16 +75,10 @@ const dragEventAPI = (() => {
       cell.addEventListener('drop', _handleDrop);
     });
     // add drag events to draggables
-    destroyerDraggable.addEventListener('dragstart', _handleDragStart);
-    destroyerDraggable.addEventListener('dragend', _handleDragEnd);
-    carrierDraggable.addEventListener('dragstart', _handleDragStart);
-    carrierDraggable.addEventListener('dragend', _handleDragEnd);
-    submarineDraggable.addEventListener('dragstart', _handleDragStart);
-    submarineDraggable.addEventListener('dragend', _handleDragEnd);
-    patrolDraggable.addEventListener('dragstart', _handleDragStart);
-    patrolDraggable.addEventListener('dragend', _handleDragEnd);
-    battleshipDraggable.addEventListener('dragstart', _handleDragStart);
-    battleshipDraggable.addEventListener('dragend', _handleDragEnd);
+    _draggables().forEach(draggable => {
+      draggable.addEventListener('dragstart', _handleDragStart);
+      draggable.addEventListener('dragend', _handleDragEnd);
+    });
   }
   
   /**
