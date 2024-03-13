@@ -1,5 +1,6 @@
 import DOMBuilder from "./domBuilder";
 import Ship from './ship';
+import eventObserver from "./eventObserver";
 
 /**
  * Module for displaying HTML elements of the DOM.
@@ -53,6 +54,28 @@ const DOMController = (() => {
         handler(e);
       })
     })
+    // run the board active event
+    eventObserver.run('board active', gameboard.board);
+  }
+
+  /**
+   * Adds a class to a HTML element representing a board.
+   *
+   * @param {HTMLElement} board - The element holding the game board.
+   * @returns {undefined}
+   */
+  const activeBoard = (board) => {
+    board.classList.add('active-board');
+  }
+
+  /**
+   * Removes a class from a HTML element representing a board.
+   *
+   * @param {HTMLElement} board - The element holding the game board.
+   * @returns {undefined}
+   */
+  const inertBoard = (board) => {
+    board.classList.remove('active-board');
   }
 
   /**
@@ -60,7 +83,7 @@ const DOMController = (() => {
    * 
    * @returns {Object} The public API with the displayBoard, displayDraggables functions.
    */
-  return { displayBoard, displayDraggables, activateAIBoard }
+  return { displayBoard, displayDraggables, activateAIBoard, activeBoard, inertBoard }
 })();
 
 export default DOMController;

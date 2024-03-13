@@ -16,15 +16,23 @@ const game = (() => {
   DOMController.displayBoard(playerBoard);
   DOMController.displayBoard(aiBoard);
   DOMController.displayDraggables();
+
+  // EVENTS
   // Subscribe the AI board to be activated when the game is ready
   eventObserver.subscribe('game ready', DOMController.activateAIBoard, aiBoard, handlePlayerTurn)
 
+  // Subscribe the AI board for active display
+  eventObserver.subscribe('board active', DOMController.activeBoard);
+  eventObserver.subscribe('board inert', DOMController.inertBoard);
+  
   aiBoard.placeShipsRandomly();
   dragEventAPI.setup(playerBoard);
 
   // nothing happens if placed after random, will crash if placed before in placeShipsRandomly()
   // const patrolAI = new Ship('patrol', 2);
   // aiBoard.placeShip('G9', patrolAI);
+
+  console.log(aiBoard)
 
   function handlePlayerTurn(event) {
     if (event && currentPlayer === 'human') {
@@ -39,18 +47,21 @@ const game = (() => {
   }
 
   function handleAITurn() {
-    if (currentPlayer === 'ai') {
-      const coord = aiPlayer.getMove();
-      const hit = playerBoard.receiveAttack(coord);
-      console.log(playerBoard.allSunk(), 'player')
-      // switches to handlePlayerTurn() if no hit
-      if (!hit) {
-        currentPlayer = 'human';
-        return;
+    eventObserver.run('board inert', aiBoard.board)
+    setTimeout(()=> {
+      if (currentPlayer === 'ai') {
+        const coord = aiPlayer.getMove();
+        const hit = playerBoard.receiveAttack(coord);
+        // switches to handlePlayerTurn() if no hit
+        if (!hit) {
+          currentPlayer = 'human';
+          eventObserver.run('board active', aiBoard.board)
+          return;
+        }
+        // or gives AI another go if a hit is a success
+        handleAITurn();
       }
-      // or gives AI another go if a hit is a success
-      handleAITurn();
-    }
+    }, 1500);
   }
 
 })();
