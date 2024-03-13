@@ -20,7 +20,6 @@ const game = (() => {
   // EVENTS
   // Subscribe the AI board to be activated when the game is ready
   eventObserver.subscribe('game ready', DOMController.activateAIBoard, aiBoard, handlePlayerTurn)
-
   // Subscribe the AI board for active display
   eventObserver.subscribe('board active', DOMController.activeBoard);
   eventObserver.subscribe('board inert', DOMController.inertBoard);

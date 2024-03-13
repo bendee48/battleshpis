@@ -20,9 +20,14 @@
   border: 3px solid red !important;
 }
 
+.draggable.clear {
+  pointer-events: none;
+}
+
 .draggable.clear * {
   background: none !important;
 }
+
 
 /* Board */
 
