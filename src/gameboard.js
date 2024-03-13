@@ -1,4 +1,5 @@
 import Ship from './ship';
+import eventObserver from './eventObserver';
 
 /**
  * Represents a game board.
@@ -22,6 +23,7 @@ class Gameboard {
     this.ships = {};
     this.misses = [];
   }
+
 
   /**
    * Places a ship on the board from the provided coordinate.
@@ -48,6 +50,10 @@ class Gameboard {
 
     // Keep track of ships placed on board
     this.ships[ship.name] = ship;
+    // trigger the game ready event if player board is ready 
+    if (this.#playerBoardReady()) {
+      eventObserver.run('game ready');
+    }
     return true;
   }
 
@@ -258,6 +264,19 @@ class Gameboard {
       dict[cell.dataset.coordinate] = cell;
       return dict;
     }, {});
+  }
+
+  /**
+   * Checks if all the player's ships have been placed.
+   * 
+   * @private
+   * @returns {Boolean} - True if all player ships have been placed on board. false otherwise.
+   */
+  #playerBoardReady() {
+    const noOfShipsPlaced = Object.keys(this.ships).length;
+    const noOfAvailableShips = Ship.shipInfo().length;
+
+    return noOfShipsPlaced >= noOfAvailableShips && this.name === 'player-board'
   }
 }
 

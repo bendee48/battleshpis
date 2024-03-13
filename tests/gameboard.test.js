@@ -14,6 +14,7 @@ ShipMock.mockImplementation(function (name, length) {
   this.hits = 0;
   this.hit = jest.fn(() => this.hits++);
   this.isSunk = jest.fn(() => this.hits >= this.length);
+  ShipMock.shipInfo = jest.fn(() => [1,2,3,4,5] );
 });
 
 

@@ -41,11 +41,26 @@ const DOMController = (() => {
   }
 
   /**
+   * Adds event listeners to the AI board.
+   *
+   * @param {object} gameboard - A Gameboard instance.
+   * @param {Function} handler - The function to handle the event.
+   * @returns {undefined}
+   */
+  const activateAIBoard = (gameboard, handler) => {
+    Array.from(gameboard.board.childNodes).forEach(cell => {
+      cell.addEventListener('click', (e) => {
+        handler(e);
+      })
+    })
+  }
+
+  /**
    * Public API of the module.
    * 
    * @returns {Object} The public API with the displayBoard, displayDraggables functions.
    */
-  return { displayBoard, displayDraggables }
+  return { displayBoard, displayDraggables, activateAIBoard }
 })();
 
 export default DOMController;

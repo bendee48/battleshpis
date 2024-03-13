@@ -2,7 +2,7 @@ import Player from './player';
 import Gameboard from './gameboard';
 import DOMController from './domController';
 import dragEventAPI from './dragEventAPI';
-import DOMBuilder from './domBuilder'
+import eventObserver from './eventObserver';
 
 // Main game loop
 const game = (() => {
@@ -16,18 +16,11 @@ const game = (() => {
   DOMController.displayBoard(playerBoard);
   DOMController.displayBoard(aiBoard);
   DOMController.displayDraggables();
-
-  dragEventAPI.setup(playerBoard);
-
-  // Adding event listener to ai cells
-
-  Array.from(aiBoard.board.childNodes).forEach(cell => {
-    cell.addEventListener('click', (e) => {
-      handlePlayerTurn(e);
-    })
-  })
+  // Subscribe the AI board to be activated when the game is ready
+  eventObserver.subscribe('game ready', DOMController.activateAIBoard, aiBoard, handlePlayerTurn)
 
   aiBoard.placeShipsRandomly();
+  dragEventAPI.setup(playerBoard);
 
   // nothing happens if placed after random, will crash if placed before in placeShipsRandomly()
   // const patrolAI = new Ship('patrol', 2);
@@ -58,7 +51,7 @@ const game = (() => {
       // or gives AI another go if a hit is a success
       handleAITurn();
     }
-  } 
+  }
 
 })();
 
