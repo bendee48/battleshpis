@@ -3,6 +3,7 @@ import Gameboard from './gameboard';
 import DOMController from './domController';
 import dragEventAPI from './dragEventAPI';
 import eventObserver from './eventObserver';
+import DOMBuilder from './domBuilder';
 
 // Main game loop
 const game = (() => {
@@ -31,12 +32,11 @@ const game = (() => {
   // const patrolAI = new Ship('patrol', 2);
   // aiBoard.placeShip('G9', patrolAI);
 
-  console.log(aiBoard)
-
   function handlePlayerTurn(event) {
     if (event && currentPlayer === 'human') {
       const coord = humanPlayer.convertPlayerMove(event);
       const hit = aiBoard.receiveAttack(coord);
+      checkWin(aiBoard);
       // if a miss move to AI turn
       if (!hit) {
         currentPlayer = 'ai';
@@ -51,6 +51,7 @@ const game = (() => {
       if (currentPlayer === 'ai') {
         const coord = aiPlayer.getMove();
         const hit = playerBoard.receiveAttack(coord);
+        checkWin(playerBoard);
         // switches to handlePlayerTurn() if no hit
         if (!hit) {
           currentPlayer = 'human';
@@ -60,8 +61,21 @@ const game = (() => {
         // or gives AI another go if a hit is a success
         handleAITurn();
       }
-    }, 1500);
+    }, 0);
   }
+
+  function checkWin(board) {
+    if (board.name === 'ai-board' && board.allSunk()) {
+      const text = 'Player won!';
+      DOMController.displayGameOver(text);
+    } else if (board.name === 'player-board' && board.allSunk()){
+      const text = 'Computer won!'
+      DOMController.displayGameOver(text);
+    }
+  }
+
+  // TESTTING
+  // DOMController.displayGameOver('hello')
 
 })();
 

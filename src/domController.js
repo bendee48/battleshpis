@@ -12,6 +12,8 @@ const DOMController = (() => {
   const boardsContainer = document.querySelector('.boards-container');
   // container for the draggable elements
   const draggablesContainer = document.querySelector('.draggables-container');
+  // page container
+  const pageContainer = document.querySelector('.page-container');
 
   /**
    * Displays a game board.
@@ -78,12 +80,20 @@ const DOMController = (() => {
     board.classList.remove('active-board');
   }
 
+  // TODO document
+  const displayGameOver = (text) => {
+    const endScreen = DOMBuilder.buildStandardElement('end-screen');
+    const menu = DOMBuilder.buildMenu(text);
+    endScreen.appendChild(menu);
+    pageContainer.appendChild(endScreen);
+  }
+
   /**
    * Public API of the module.
    * 
    * @returns {Object} The public API with the displayBoard, displayDraggables functions.
    */
-  return { displayBoard, displayDraggables, activateAIBoard, activeBoard, inertBoard }
+  return { displayBoard, displayDraggables, activateAIBoard, activeBoard, inertBoard, displayGameOver }
 })();
 
 export default DOMController;

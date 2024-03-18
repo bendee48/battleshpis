@@ -24,6 +24,28 @@ const DOMBuilder = (() => {
     return element;
   }
 
+  // TODO document
+  const buildStandardElement = (...classes) => {
+    const element = document.createElement('div');
+    element.classList.add(...classes);
+
+    return element;
+  }
+
+  // TODO document
+  const buildMenu = (text) => {
+    let menu = buildStandardElement('menu');
+    let btn = document.createElement('button');
+    let para = document.createElement('p');
+    btn.innerText = 'Play Again?';
+    para.innerText = text;
+    btn.classList.add('menu-btn');
+    para.classList.add('menu-text');
+    menu.append(para, btn);
+
+    return menu;
+  }
+
   /**
    * Appends cells to the draggable element.
    *
@@ -52,12 +74,13 @@ const DOMBuilder = (() => {
     return element;
   }
 
+
   /**
    * Public API of the module.
    * 
    * @returns {Object} The public API with the buildDraggable function.
    */
-  return { buildDraggable };
+  return { buildDraggable, buildStandardElement, buildMenu };
 })();
 
 export default DOMBuilder;

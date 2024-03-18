@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1710356930983" clover="3.2.0">
-  <project timestamp="1710356930983" name="All files">
-    <metrics statements="108" coveredstatements="107" conditionals="23" coveredconditionals="20" methods="23" coveredmethods="23" elements="154" coveredelements="150" complexity="0" loc="108" ncloc="108" packages="1" files="4" classes="4"/>
+<coverage generated="1710720188144" clover="3.2.0">
+  <project timestamp="1710720188144" name="All files">
+    <metrics statements="108" coveredstatements="106" conditionals="23" coveredconditionals="19" methods="23" coveredmethods="23" elements="154" coveredelements="148" complexity="0" loc="108" ncloc="108" packages="1" files="4" classes="4"/>
     <file name="eventObserver.js" path="/Users/bendee/JavaScript/battleships/src/eventObserver.js">
       <metrics statements="15" coveredstatements="15" conditionals="8" coveredconditionals="6" methods="4" coveredmethods="4"/>
       <line num="6" count="3" type="stmt"/>
@@ -21,7 +21,7 @@
       <line num="59" count="3" type="stmt"/>
     </file>
     <file name="gameboard.js" path="/Users/bendee/JavaScript/battleships/src/gameboard.js">
-      <metrics statements="72" coveredstatements="71" conditionals="15" coveredconditionals="14" methods="9" coveredmethods="9"/>
+      <metrics statements="72" coveredstatements="70" conditionals="15" coveredconditionals="13" methods="9" coveredmethods="9"/>
       <line num="20" count="10" type="stmt"/>
       <line num="21" count="10" type="stmt"/>
       <line num="22" count="10" type="stmt"/>
@@ -45,11 +45,11 @@
       <line num="70" count="1" type="stmt"/>
       <line num="71" count="1" type="stmt"/>
       <line num="74" count="1" type="stmt"/>
-      <line num="75" count="7" type="stmt"/>
-      <line num="76" count="7" type="stmt"/>
-      <line num="77" count="7" type="cond" truecount="2" falsecount="0"/>
+      <line num="75" count="5" type="stmt"/>
+      <line num="76" count="5" type="stmt"/>
+      <line num="77" count="5" type="cond" truecount="1" falsecount="1"/>
       <line num="78" count="5" type="stmt"/>
-      <line num="80" count="2" type="stmt"/>
+      <line num="80" count="0" type="stmt"/>
       <line num="92" count="7" type="stmt"/>
       <line num="95" count="7" type="cond" truecount="2" falsecount="0"/>
       <line num="96" count="6" type="stmt"/>
@@ -60,8 +60,8 @@
       <line num="107" count="1" type="stmt"/>
       <line num="109" count="1" type="stmt"/>
       <line num="119" count="2" type="stmt"/>
-      <line num="128" count="17" type="stmt"/>
-      <line num="139" count="21" type="cond" truecount="3" falsecount="0"/>
+      <line num="128" count="13" type="stmt"/>
+      <line num="139" count="19" type="cond" truecount="3" falsecount="0"/>
       <line num="153" count="10" type="stmt"/>
       <line num="154" count="10" type="stmt"/>
       <line num="156" count="10" type="stmt"/>
@@ -69,14 +69,14 @@
       <line num="158" count="1000" type="stmt"/>
       <line num="159" count="1000" type="stmt"/>
       <line num="163" count="10" type="stmt"/>
-      <line num="176" count="21" type="stmt"/>
-      <line num="177" count="21" type="stmt"/>
-      <line num="178" count="21" type="stmt"/>
-      <line num="179" count="21" type="stmt"/>
-      <line num="180" count="21" type="stmt"/>
+      <line num="176" count="19" type="stmt"/>
+      <line num="177" count="19" type="stmt"/>
+      <line num="178" count="19" type="stmt"/>
+      <line num="179" count="19" type="stmt"/>
+      <line num="180" count="19" type="stmt"/>
       <line num="191" count="17" type="stmt"/>
-      <line num="203" count="19" type="stmt"/>
-      <line num="204" count="61" type="cond" truecount="2" falsecount="0"/>
+      <line num="203" count="18" type="stmt"/>
+      <line num="204" count="60" type="cond" truecount="2" falsecount="0"/>
       <line num="206" count="59" type="stmt"/>
       <line num="207" count="59" type="stmt"/>
       <line num="209" count="17" type="stmt"/>

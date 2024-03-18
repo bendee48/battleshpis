@@ -21,15 +21,15 @@ ShipMock.mockImplementation(function (name, length) {
 // Gameboard Class
 describe('Gameboard class', () => { 
 
-  describe('createBoard()', () => {
+  describe('Creating a board (.board)', () => {
     const gameboard = new Gameboard('player-board');
 
-    it('creates a board', () => {
+    it('returns a game board', () => {
       expect(gameboard.board.tagName).toBe('DIV');
       expect(gameboard.board.className).toEqual(expect.stringMatching(/board/));
     })
 
-    it('creates a board with 100 cells', () => {
+    it('returns a board with 100 cells', () => {
       expect(gameboard.board.childElementCount).toBe(100);
     })
 
