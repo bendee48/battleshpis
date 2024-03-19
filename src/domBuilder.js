@@ -1,7 +1,7 @@
 /**
  * Module for building HTML elements for the DOM.
  *
- * @returns {Object} The public API with the buildDraggable function.
+ * @returns {Object} The public API with the buildDraggable, buildStandardElement, buildMenu functions.
  */
 const DOMBuilder = (() => {
   /**
@@ -13,9 +13,8 @@ const DOMBuilder = (() => {
    * @example - const draggableElement = DOMBuilder.buildDraggable('example', 3);
    */
   const buildDraggable = (name, length) => {
-    const element = document.createElement('div');
+    const element = buildStandardElement('div', 'draggable');
     element.setAttribute('id', `${name}-draggable`);
-    element.classList.add('draggable');
     element.draggable = true;
     element.dataset.name = name;
     element.dataset.length = length;
@@ -24,23 +23,32 @@ const DOMBuilder = (() => {
     return element;
   }
 
-  // TODO document
-  const buildStandardElement = (...classes) => {
-    const element = document.createElement('div');
+  /**
+   * Builds a HTML element and adds any classes.
+   *
+   * @param {string} elementType - The name of the HTML element to create.
+   * @param {...string} classes - The names of classes to add to the element.
+   * @returns {HTMLElement} The created HTML element.
+   */
+  const buildStandardElement = (elementType, ...classes) => {
+    const element = document.createElement(elementType);
     element.classList.add(...classes);
 
     return element;
   }
 
-  // TODO document
+  /**
+   * Builds the menu HTML element.
+   *
+   * @param {string} text - A string to be displayed.
+   * @returns {HTMLElement} The created HTML element.
+   */
   const buildMenu = (text) => {
-    let menu = buildStandardElement('menu');
-    let btn = document.createElement('button');
-    let para = document.createElement('p');
+    let menu = buildStandardElement('div', 'menu');
+    let btn = buildStandardElement('button', 'menu-btn');
+    let para = buildStandardElement('p', 'menu-text');
     btn.innerText = 'Play Again?';
     para.innerText = text;
-    btn.classList.add('menu-btn');
-    para.classList.add('menu-text');
     menu.append(para, btn);
 
     return menu;
@@ -68,8 +76,7 @@ const DOMBuilder = (() => {
    * @returns {HTMLElement} The draggable cell element.
    */
   const _buildDraggableCell = (name) => {
-    const element = document.createElement('div');
-    element.classList.add('cell', name);
+    const element = buildStandardElement('div', 'cell', name)
 
     return element;
   }
@@ -78,7 +85,7 @@ const DOMBuilder = (() => {
   /**
    * Public API of the module.
    * 
-   * @returns {Object} The public API with the buildDraggable function.
+   * @returns {Object} The public API with the buildDraggable, buildStandardElement & buildMenu functions.
    */
   return { buildDraggable, buildStandardElement, buildMenu };
 })();

@@ -5,7 +5,8 @@ import eventObserver from "./eventObserver";
 /**
  * Module for displaying HTML elements of the DOM.
  *
- * @returns {Object} The public API with the displayBoard, displayDraggables functions.
+ * @returns {Object} The public API with the displayBoard, displayDraggables, activateAIBoard,
+   *                 activeBoard, inertBoard, displayGameOver, clearPage, removeGameOver functions.
  */
 const DOMController = (() => {
   // container for the game boards
@@ -51,7 +52,6 @@ const DOMController = (() => {
    * @returns {undefined}
    */
   const activateAIBoard = (gameboard, handler) => {
-    console.log('working?', gameboard, handler)
     Array.from(gameboard.board.childNodes).forEach(cell => {
       cell.addEventListener('click', (e) => {
         handler(e);
@@ -81,21 +81,34 @@ const DOMController = (() => {
     board.classList.remove('active-board');
   }
 
-  // TODO document
+  /**
+   * Displays the game over screen.
+   *
+   * @param {String} text - A string to be displayed.
+   * @returns {undefined}
+   */
   const displayGameOver = (text) => {
-    const endScreen = DOMBuilder.buildStandardElement('end-screen');
+    const endScreen = DOMBuilder.buildStandardElement('div', 'end-screen');
     const menu = DOMBuilder.buildMenu(text);
     endScreen.appendChild(menu);
     pageContainer.appendChild(endScreen);
   }
 
-  // TOD) testing
+  /**
+   * Removes the game over screen.
+   *
+   * @returns {undefined}
+   */
   const removeGameOver = () => {
     const element = document.querySelector('.end-screen');
     element.remove();
   }
 
-  // TODO document testing
+  /**
+   * Clears the HTML page of all elements.
+   *
+   * @returns {undefined}
+   */
   const clearPage = () => {
     boardsContainer.innerHTML = '';
     draggablesContainer.innerHTML = '';
@@ -104,10 +117,19 @@ const DOMController = (() => {
   /**
    * Public API of the module.
    * 
-   * @returns {Object} The public API with the displayBoard, displayDraggables functions.
+   * @returns {Object} The public API with the displayBoard, displayDraggables, activateAIBoard,
+   *                   activeBoard, inertBoard, displayGameOver, clearPage, removeGameOver functions.
    */
-  return { displayBoard, displayDraggables, activateAIBoard, activeBoard, 
-           inertBoard, displayGameOver, clearPage, removeGameOver }
+  return { 
+           displayBoard, 
+           displayDraggables,
+           activateAIBoard,
+           activeBoard, 
+           inertBoard,
+           displayGameOver,
+           clearPage,
+           removeGameOver
+         }
 })();
 
 export default DOMController;

@@ -3,7 +3,6 @@ import Gameboard from './gameboard';
 import DOMController from './domController';
 import dragEventAPI from './dragEventAPI';
 import eventObserver from './eventObserver';
-import DOMBuilder from './domBuilder';
 
 // Main game loop
 const game = (() => {
@@ -107,10 +106,6 @@ const game = (() => {
     dragEventAPI.setup(playerBoard);
     console.log(eventObserver)
   }
-
-
-  // TESTTING
-  // DOMController.displayGameOver('hello')
 
 })();
 

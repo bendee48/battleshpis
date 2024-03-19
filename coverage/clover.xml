@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1710869124595" clover="3.2.0">
-  <project timestamp="1710869124595" name="All files">
+<coverage generated="1710873526178" clover="3.2.0">
+  <project timestamp="1710873526178" name="All files">
     <metrics statements="114" coveredstatements="113" conditionals="25" coveredconditionals="21" methods="27" coveredmethods="27" elements="166" coveredelements="161" complexity="0" loc="114" ncloc="114" packages="1" files="4" classes="4"/>
     <file name="eventObserver.js" path="/Users/bendee/JavaScript/battleships/src/eventObserver.js">
       <metrics statements="21" coveredstatements="21" conditionals="10" coveredconditionals="7" methods="8" coveredmethods="8"/>
@@ -82,12 +82,12 @@
       <line num="180" count="21" type="stmt"/>
       <line num="191" count="17" type="stmt"/>
       <line num="203" count="20" type="stmt"/>
-      <line num="204" count="62" type="cond" truecount="2" falsecount="0"/>
-      <line num="206" count="59" type="stmt"/>
-      <line num="207" count="59" type="stmt"/>
+      <line num="204" count="64" type="cond" truecount="2" falsecount="0"/>
+      <line num="206" count="61" type="stmt"/>
+      <line num="207" count="61" type="stmt"/>
       <line num="209" count="17" type="stmt"/>
-      <line num="222" count="98" type="stmt"/>
-      <line num="223" count="98" type="stmt"/>
+      <line num="222" count="100" type="stmt"/>
+      <line num="223" count="100" type="stmt"/>
       <line num="235" count="1000" type="stmt"/>
       <line num="236" count="1000" type="stmt"/>
       <line num="247" count="1000" type="stmt"/>
