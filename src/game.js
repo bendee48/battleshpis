@@ -7,12 +7,12 @@ import DOMBuilder from './domBuilder';
 
 // Main game loop
 const game = (() => {
-  const humanPlayer = new Player('human');
-  const aiPlayer = new Player('ai');
+  let humanPlayer = new Player('human');
+  let aiPlayer = new Player('ai');
   let currentPlayer = 'human';
 
-  const playerBoard = new Gameboard('player-board');
-  const aiBoard = new Gameboard('ai-board');
+  let playerBoard = new Gameboard('player-board');
+  let aiBoard = new Gameboard('ai-board');
 
   DOMController.displayBoard(playerBoard);
   DOMController.displayBoard(aiBoard);
@@ -51,7 +51,8 @@ const game = (() => {
       if (currentPlayer === 'ai') {
         const coord = aiPlayer.getMove();
         const hit = playerBoard.receiveAttack(coord);
-        checkWin(playerBoard);
+        // return after a win
+        if (checkWin(playerBoard)) return;
         // switches to handlePlayerTurn() if no hit
         if (!hit) {
           currentPlayer = 'human';
@@ -68,11 +69,45 @@ const game = (() => {
     if (board.name === 'ai-board' && board.allSunk()) {
       const text = 'Player won!';
       DOMController.displayGameOver(text);
+      handleGameOver();
+      return true;
     } else if (board.name === 'player-board' && board.allSunk()){
       const text = 'Computer won!'
       DOMController.displayGameOver(text);
+      handleGameOver();
+      return true;
     }
   }
+
+  function handleGameOver() {
+    const btn = document.querySelector('.menu-btn');
+    btn.addEventListener('click', restartGame);
+  }
+
+  function restartGame() {
+    console.log('restarting')
+    DOMController.removeGameOver();
+    DOMController.clearPage()
+
+    humanPlayer = new Player('human');
+    aiPlayer = new Player('ai');
+    currentPlayer = 'human';
+
+    playerBoard = new Gameboard('player-board');
+    aiBoard = new Gameboard('ai-board');
+
+    DOMController.displayBoard(playerBoard);
+    DOMController.displayBoard(aiBoard);
+    DOMController.displayDraggables();
+    
+    eventObserver.unsubscribe('game ready', DOMController.activateAIBoard)
+    eventObserver.subscribe('game ready', DOMController.activateAIBoard, aiBoard, handlePlayerTurn)
+  
+    aiBoard.placeShipsRandomly();
+    dragEventAPI.setup(playerBoard);
+    console.log(eventObserver)
+  }
+
 
   // TESTTING
   // DOMController.displayGameOver('hello')

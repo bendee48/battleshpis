@@ -51,6 +51,7 @@ const DOMController = (() => {
    * @returns {undefined}
    */
   const activateAIBoard = (gameboard, handler) => {
+    console.log('working?', gameboard, handler)
     Array.from(gameboard.board.childNodes).forEach(cell => {
       cell.addEventListener('click', (e) => {
         handler(e);
@@ -88,12 +89,25 @@ const DOMController = (() => {
     pageContainer.appendChild(endScreen);
   }
 
+  // TOD) testing
+  const removeGameOver = () => {
+    const element = document.querySelector('.end-screen');
+    element.remove();
+  }
+
+  // TODO document testing
+  const clearPage = () => {
+    boardsContainer.innerHTML = '';
+    draggablesContainer.innerHTML = '';
+  }
+
   /**
    * Public API of the module.
    * 
    * @returns {Object} The public API with the displayBoard, displayDraggables functions.
    */
-  return { displayBoard, displayDraggables, activateAIBoard, activeBoard, inertBoard, displayGameOver }
+  return { displayBoard, displayDraggables, activateAIBoard, activeBoard, 
+           inertBoard, displayGameOver, clearPage, removeGameOver }
 })();
 
 export default DOMController;

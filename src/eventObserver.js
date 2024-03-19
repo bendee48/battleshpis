@@ -1,7 +1,7 @@
 /**
  * Module for saving and triggering events.
  *
- * @returns {Object} The public API with the subscribe() and run() functions.
+ * @returns {Object} The public API with the subscribe() and run() functions, and the subscriptions property.
  */
 const eventObserver = (() => {
   // hold the event name with the functions signed up to them
@@ -28,7 +28,25 @@ const eventObserver = (() => {
     }
 
     // return 'subsribed' for a successful subscribe
-    if (subscriptions.get(eventName).includes(funcInfo)) return 'Subscribed!';
+    if (_isSubscribed(eventName, func)) return 'Subscribed!';
+  }
+
+  /**
+   * Unsubscribes a function from an event.
+   *
+   * @param {String} eventName - The name of the event.
+   * @param {Function} func - Function to be removed.
+   * @returns {undefined|String} - Returns a string for a successful unsubscribe otherwise undefined
+   */
+  function unsubscribe(eventName, func) {
+    // remove function from event (if it exists) and save as new list
+    let newList = subscriptions.get(eventName).filter(funcInfo => {
+      return funcInfo.func !== func;
+    })
+    // set new list to event
+    subscriptions.set(eventName, newList);
+
+    if (!_isSubscribed(eventName, func)) return 'Unsubscribed.';
   }
 
   /**
@@ -51,12 +69,27 @@ const eventObserver = (() => {
     }
   }
 
+  /** Private Functions **/
+
+  /**
+   * Checks if a function is subscribed to an event.
+   *
+   * @param {String} eventName - The name of the event.
+   * @param {Function} func - The function.
+   * @returns {Boolean} - Returns true is the function is subscribed, otherwise false
+   */
+  function _isSubscribed(eventName, func) {
+    return subscriptions.get(eventName).some(funcInfo => {
+      return funcInfo.func == func;
+    })
+  }
+
   /**
    * Public API for the module.
    * 
    * @returns {Object} The public API with the subscribe() and run() functions.
    */
-  return { subscribe, run }
+  return { subscribe, unsubscribe, run, subscriptions }
 })();
 
 export default eventObserver; 
