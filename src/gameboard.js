@@ -1,5 +1,6 @@
 import Ship from './ship';
 import eventObserver from './eventObserver';
+import DOMController from './domController';
 
 /**
  * Represents a game board.
@@ -41,13 +42,14 @@ class Gameboard {
     for (let i = 0; i < ship.length; i++) {
       // Mark cell as taken & add class name
       this.cells[coord].classList.add(ship.name, 'taken');
+      // records cell to the ship
+      ship.addCell(this.cells[coord]);
       // Add ships name to cell
       this.cells[coord].dataset.shipName = ship.name;
       // Create coord for the next letter (horizontal movement)
       let [letter, num] = this.#splitCoordinate(coord);
       coord = String.fromCharCode(letter.charCodeAt() + 1) + num;
     }
-
     // Keep track of ships placed on board
     this.ships[ship.name] = ship;
     // trigger the game ready event if player board is ready 
@@ -93,11 +95,16 @@ class Gameboard {
 
     // check if a ship occupies the coordinate
     if (divElement.className.includes('taken')) {
-      let shipName = divElement.dataset.shipName;
+      const shipName = divElement.dataset.shipName;
+      const ship = this.ships[shipName];
       // record hit on ship
-      this.ships[shipName].hit();
+      ship.hit();
       // add .hit class to cell
       this.cells[coord].classList.add('hit');
+      // if attack sinks ship, highlight it's cells
+      if (ship.isSunk()) {
+        DOMController.highlightSunkShip(ship.cells);
+      }
       // return true to indicate a hit
       return true;
     } else {

@@ -1,7 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1710956899738" clover="3.2.0">
-  <project timestamp="1710956899738" name="All files">
-    <metrics statements="114" coveredstatements="113" conditionals="25" coveredconditionals="21" methods="27" coveredmethods="27" elements="166" coveredelements="161" complexity="0" loc="114" ncloc="114" packages="1" files="4" classes="4"/>
+<coverage generated="1711404134356" clover="3.2.0">
+  <project timestamp="1711404134356" name="All files">
+    <metrics statements="184" coveredstatements="143" conditionals="27" coveredconditionals="23" methods="48" coveredmethods="32" elements="259" coveredelements="198" complexity="0" loc="184" ncloc="184" packages="1" files="6" classes="6"/>
+    <file name="domBuilder.js" path="/Users/bendee/JavaScript/battleships/src/domBuilder.js">
+      <metrics statements="28" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="1"/>
+      <line num="6" count="2" type="stmt"/>
+      <line num="15" count="2" type="stmt"/>
+      <line num="16" count="0" type="stmt"/>
+      <line num="17" count="0" type="stmt"/>
+      <line num="18" count="0" type="stmt"/>
+      <line num="19" count="0" type="stmt"/>
+      <line num="20" count="0" type="stmt"/>
+      <line num="21" count="0" type="stmt"/>
+      <line num="23" count="0" type="stmt"/>
+      <line num="33" count="2" type="stmt"/>
+      <line num="34" count="0" type="stmt"/>
+      <line num="35" count="0" type="stmt"/>
+      <line num="37" count="0" type="stmt"/>
+      <line num="46" count="2" type="stmt"/>
+      <line num="47" count="0" type="stmt"/>
+      <line num="48" count="0" type="stmt"/>
+      <line num="49" count="0" type="stmt"/>
+      <line num="50" count="0" type="stmt"/>
+      <line num="51" count="0" type="stmt"/>
+      <line num="52" count="0" type="stmt"/>
+      <line num="54" count="0" type="stmt"/>
+      <line num="65" count="2" type="stmt"/>
+      <line num="66" count="0" type="stmt"/>
+      <line num="67" count="0" type="stmt"/>
+      <line num="78" count="2" type="stmt"/>
+      <line num="79" count="0" type="stmt"/>
+      <line num="81" count="0" type="stmt"/>
+      <line num="90" count="2" type="stmt"/>
+    </file>
+    <file name="domController.js" path="/Users/bendee/JavaScript/battleships/src/domController.js">
+      <metrics statements="34" coveredstatements="15" conditionals="0" coveredconditionals="0" methods="13" coveredmethods="2"/>
+      <line num="11" count="2" type="stmt"/>
+      <line num="13" count="2" type="stmt"/>
+      <line num="15" count="2" type="stmt"/>
+      <line num="17" count="2" type="stmt"/>
+      <line num="25" count="2" type="stmt"/>
+      <line num="26" count="0" type="stmt"/>
+      <line num="34" count="2" type="stmt"/>
+      <line num="41" count="0" type="stmt"/>
+      <line num="42" count="0" type="stmt"/>
+      <line num="43" count="0" type="stmt"/>
+      <line num="54" count="2" type="stmt"/>
+      <line num="55" count="0" type="stmt"/>
+      <line num="56" count="0" type="stmt"/>
+      <line num="57" count="0" type="stmt"/>
+      <line num="61" count="0" type="stmt"/>
+      <line num="70" count="2" type="stmt"/>
+      <line num="71" count="0" type="stmt"/>
+      <line num="80" count="2" type="stmt"/>
+      <line num="81" count="0" type="stmt"/>
+      <line num="90" count="2" type="stmt"/>
+      <line num="91" count="0" type="stmt"/>
+      <line num="92" count="0" type="stmt"/>
+      <line num="93" count="0" type="stmt"/>
+      <line num="94" count="0" type="stmt"/>
+      <line num="102" count="2" type="stmt"/>
+      <line num="103" count="0" type="stmt"/>
+      <line num="104" count="0" type="stmt"/>
+      <line num="112" count="2" type="stmt"/>
+      <line num="113" count="0" type="stmt"/>
+      <line num="114" count="0" type="stmt"/>
+      <line num="118" count="2" type="stmt"/>
+      <line num="119" count="1" type="stmt"/>
+      <line num="120" count="0" type="stmt"/>
+      <line num="130" count="2" type="stmt"/>
+    </file>
     <file name="eventObserver.js" path="/Users/bendee/JavaScript/battleships/src/eventObserver.js">
       <metrics statements="21" coveredstatements="21" conditionals="10" coveredconditionals="7" methods="8" coveredmethods="8"/>
       <line num="6" count="3" type="stmt"/>
@@ -27,79 +95,84 @@
       <line num="92" count="3" type="stmt"/>
     </file>
     <file name="gameboard.js" path="/Users/bendee/JavaScript/battleships/src/gameboard.js">
-      <metrics statements="72" coveredstatements="71" conditionals="15" coveredconditionals="14" methods="9" coveredmethods="9"/>
-      <line num="20" count="10" type="stmt"/>
-      <line num="21" count="10" type="stmt"/>
-      <line num="22" count="10" type="stmt"/>
-      <line num="23" count="10" type="stmt"/>
-      <line num="24" count="10" type="stmt"/>
-      <line num="37" count="14" type="cond" truecount="2" falsecount="0"/>
-      <line num="38" count="3" type="stmt"/>
-      <line num="41" count="11" type="stmt"/>
-      <line num="43" count="39" type="stmt"/>
-      <line num="45" count="39" type="stmt"/>
-      <line num="47" count="39" type="stmt"/>
-      <line num="48" count="39" type="stmt"/>
-      <line num="52" count="11" type="stmt"/>
-      <line num="54" count="11" type="cond" truecount="1" falsecount="1"/>
-      <line num="55" count="0" type="stmt"/>
-      <line num="57" count="11" type="stmt"/>
-      <line num="66" count="1" type="stmt"/>
-      <line num="67" count="1" type="stmt"/>
-      <line num="68" count="1" type="stmt"/>
+      <metrics statements="77" coveredstatements="76" conditionals="17" coveredconditionals="16" methods="9" coveredmethods="9"/>
+      <line num="21" count="11" type="stmt"/>
+      <line num="22" count="11" type="stmt"/>
+      <line num="23" count="11" type="stmt"/>
+      <line num="24" count="11" type="stmt"/>
+      <line num="25" count="11" type="stmt"/>
+      <line num="38" count="15" type="cond" truecount="2" falsecount="0"/>
+      <line num="39" count="3" type="stmt"/>
+      <line num="42" count="12" type="stmt"/>
+      <line num="44" count="42" type="stmt"/>
+      <line num="46" count="42" type="stmt"/>
+      <line num="48" count="42" type="stmt"/>
+      <line num="50" count="42" type="stmt"/>
+      <line num="51" count="42" type="stmt"/>
+      <line num="55" count="12" type="stmt"/>
+      <line num="57" count="12" type="cond" truecount="1" falsecount="1"/>
+      <line num="58" count="0" type="stmt"/>
+      <line num="60" count="12" type="stmt"/>
       <line num="69" count="1" type="stmt"/>
       <line num="70" count="1" type="stmt"/>
       <line num="71" count="1" type="stmt"/>
+      <line num="72" count="1" type="stmt"/>
+      <line num="73" count="1" type="stmt"/>
       <line num="74" count="1" type="stmt"/>
-      <line num="75" count="6" type="stmt"/>
-      <line num="76" count="6" type="stmt"/>
-      <line num="77" count="6" type="cond" truecount="2" falsecount="0"/>
-      <line num="78" count="5" type="stmt"/>
-      <line num="80" count="1" type="stmt"/>
-      <line num="92" count="7" type="stmt"/>
-      <line num="95" count="7" type="cond" truecount="2" falsecount="0"/>
-      <line num="96" count="6" type="stmt"/>
-      <line num="98" count="6" type="stmt"/>
+      <line num="77" count="1" type="stmt"/>
+      <line num="78" count="7" type="stmt"/>
+      <line num="79" count="7" type="stmt"/>
+      <line num="80" count="7" type="cond" truecount="2" falsecount="0"/>
+      <line num="81" count="5" type="stmt"/>
+      <line num="83" count="2" type="stmt"/>
+      <line num="95" count="7" type="stmt"/>
+      <line num="98" count="7" type="cond" truecount="2" falsecount="0"/>
+      <line num="99" count="6" type="stmt"/>
       <line num="100" count="6" type="stmt"/>
       <line num="102" count="6" type="stmt"/>
-      <line num="105" count="1" type="stmt"/>
-      <line num="107" count="1" type="stmt"/>
+      <line num="104" count="6" type="stmt"/>
+      <line num="108" count="6" type="cond" truecount="2" falsecount="0"/>
       <line num="109" count="1" type="stmt"/>
-      <line num="119" count="2" type="stmt"/>
-      <line num="128" count="15" type="stmt"/>
-      <line num="139" count="20" type="cond" truecount="3" falsecount="0"/>
-      <line num="153" count="10" type="stmt"/>
-      <line num="154" count="10" type="stmt"/>
-      <line num="156" count="10" type="stmt"/>
-      <line num="157" count="100" type="stmt"/>
-      <line num="158" count="1000" type="stmt"/>
-      <line num="159" count="1000" type="stmt"/>
-      <line num="163" count="10" type="stmt"/>
-      <line num="176" count="20" type="stmt"/>
-      <line num="177" count="20" type="stmt"/>
-      <line num="178" count="20" type="stmt"/>
-      <line num="179" count="20" type="stmt"/>
-      <line num="180" count="20" type="stmt"/>
-      <line num="191" count="17" type="stmt"/>
-      <line num="203" count="19" type="stmt"/>
-      <line num="204" count="61" type="cond" truecount="2" falsecount="0"/>
-      <line num="206" count="59" type="stmt"/>
-      <line num="207" count="59" type="stmt"/>
-      <line num="209" count="17" type="stmt"/>
-      <line num="222" count="98" type="stmt"/>
-      <line num="223" count="98" type="stmt"/>
-      <line num="235" count="1000" type="stmt"/>
-      <line num="236" count="1000" type="stmt"/>
-      <line num="247" count="1000" type="stmt"/>
-      <line num="248" count="1000" type="stmt"/>
-      <line num="250" count="1000" type="stmt"/>
-      <line num="252" count="1000" type="stmt"/>
-      <line num="263" count="10" type="stmt"/>
-      <line num="264" count="1000" type="stmt"/>
-      <line num="265" count="1000" type="stmt"/>
-      <line num="276" count="11" type="stmt"/>
-      <line num="277" count="11" type="stmt"/>
-      <line num="279" count="11" type="cond" truecount="2" falsecount="0"/>
+      <line num="110" count="1" type="stmt"/>
+      <line num="114" count="6" type="stmt"/>
+      <line num="117" count="1" type="stmt"/>
+      <line num="119" count="1" type="stmt"/>
+      <line num="121" count="1" type="stmt"/>
+      <line num="131" count="2" type="stmt"/>
+      <line num="140" count="17" type="stmt"/>
+      <line num="151" count="22" type="cond" truecount="3" falsecount="0"/>
+      <line num="165" count="11" type="stmt"/>
+      <line num="166" count="11" type="stmt"/>
+      <line num="168" count="11" type="stmt"/>
+      <line num="169" count="110" type="stmt"/>
+      <line num="170" count="1100" type="stmt"/>
+      <line num="171" count="1100" type="stmt"/>
+      <line num="175" count="11" type="stmt"/>
+      <line num="188" count="22" type="stmt"/>
+      <line num="189" count="22" type="stmt"/>
+      <line num="190" count="22" type="stmt"/>
+      <line num="191" count="22" type="stmt"/>
+      <line num="192" count="22" type="stmt"/>
+      <line num="203" count="18" type="stmt"/>
+      <line num="215" count="19" type="stmt"/>
+      <line num="216" count="63" type="cond" truecount="2" falsecount="0"/>
+      <line num="218" count="62" type="stmt"/>
+      <line num="219" count="62" type="stmt"/>
+      <line num="221" count="18" type="stmt"/>
+      <line num="234" count="104" type="stmt"/>
+      <line num="235" count="104" type="stmt"/>
+      <line num="247" count="1100" type="stmt"/>
+      <line num="248" count="1100" type="stmt"/>
+      <line num="259" count="1100" type="stmt"/>
+      <line num="260" count="1100" type="stmt"/>
+      <line num="262" count="1100" type="stmt"/>
+      <line num="264" count="1100" type="stmt"/>
+      <line num="275" count="11" type="stmt"/>
+      <line num="276" count="1100" type="stmt"/>
+      <line num="277" count="1100" type="stmt"/>
+      <line num="288" count="12" type="stmt"/>
+      <line num="289" count="12" type="stmt"/>
+      <line num="291" count="12" type="cond" truecount="2" falsecount="0"/>
     </file>
     <file name="player.js" path="/Users/bendee/JavaScript/battleships/src/player.js">
       <metrics statements="12" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
@@ -117,16 +190,19 @@
       <line num="62" count="3" type="stmt"/>
     </file>
     <file name="ship.js" path="/Users/bendee/JavaScript/battleships/src/ship.js">
-      <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="7"/>
-      <line num="13" count="7" type="stmt"/>
-      <line num="14" count="7" type="stmt"/>
-      <line num="15" count="7" type="stmt"/>
-      <line num="26" count="2" type="stmt"/>
-      <line num="41" count="2" type="stmt"/>
-      <line num="50" count="5" type="stmt"/>
-      <line num="59" count="5" type="stmt"/>
-      <line num="68" count="9" type="stmt"/>
-      <line num="77" count="2" type="stmt"/>
+      <metrics statements="12" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="9" coveredmethods="9"/>
+      <line num="13" count="9" type="stmt"/>
+      <line num="14" count="9" type="stmt"/>
+      <line num="15" count="9" type="stmt"/>
+      <line num="16" count="9" type="stmt"/>
+      <line num="27" count="2" type="stmt"/>
+      <line num="42" count="2" type="stmt"/>
+      <line num="51" count="5" type="stmt"/>
+      <line num="60" count="5" type="stmt"/>
+      <line num="69" count="2" type="stmt"/>
+      <line num="78" count="9" type="stmt"/>
+      <line num="87" count="2" type="stmt"/>
+      <line num="92" count="3" type="stmt"/>
     </file>
   </project>
 </coverage>

@@ -94,6 +94,10 @@ button {
   margin-bottom: 20px;
 }
 
+.ai-board .cell {
+  background-color: #fff;
+}
+
 .ai-board.active-board {
   cursor: pointer;
 }
@@ -122,6 +126,9 @@ button {
 
 .cell.hit {
   background-image: url('img/milker_X_icon.svg');
+  background-position: center;
+  background-origin: padding-box;
+  background-repeat: no-repeat;
   background-color: var(--grey-miss);
   pointer-events: none;
 }
@@ -131,6 +138,18 @@ button {
   pointer-events: none;
 }
 
+.cell.highlight {
+  border-top: 3px solid red;
+  border-bottom: 3px solid red;
+}
+
+.cell.highlight-first {
+  border-left: 3px solid red;
+}
+
+.cell.highlight-last {
+  border-right: 3px solid red;
+}
 
 /* Ship */
 
@@ -169,3 +188,6 @@ button {
   width: 30px;
   height: 30px;
 }
+
+/* Testing */
+

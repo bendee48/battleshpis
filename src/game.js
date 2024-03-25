@@ -132,7 +132,7 @@ const game = (() => {
         // or give AI another go if move is a hit
         _handleAITurn();
       }
-    }, 0);
+    }, 1500);
   }
 
   /**

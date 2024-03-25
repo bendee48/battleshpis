@@ -71,4 +71,24 @@ describe('Ship Class', () => {
       expect(submarine.isSunk()).toBe(false);
     })
   });
+
+  describe('addCell()', () => {
+    it('adds a cell to the list of cells the ship currently occupies', () => {
+      const destroyer = new Ship('destroyer', 3);
+      const cell = '<div class="cell destroyer taken" data-coordinate="A1" data-ship-name="destroyer"></div>';
+      const expected = [cell]
+      destroyer.addCell(cell);
+      expect(destroyer.cells).toEqual(expect.arrayContaining(expected));
+    });
+
+    it('adds two coordinates to the list of cells the ship currently occupies', () => {
+      const destroyer = new Ship('destroyer', 3);
+      const cell1 = '<div class="cell destroyer" data-coordinate="A1"></div>';
+      const cell2 = '<div class="cell destroyer" data-coordinate="B1"></div>';
+      const expected = [cell1, cell2]
+      destroyer.addCell(cell1);
+      destroyer.addCell(cell2);
+      expect(destroyer.cells).toEqual(expect.arrayContaining(expected));
+    });
+  })
 });

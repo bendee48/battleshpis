@@ -12,8 +12,10 @@ ShipMock.mockImplementation(function (name, length) {
   this.name = name;
   this.length = length;
   this.hits = 0;
+  this.cells = [];
   this.hit = jest.fn(() => this.hits++);
   this.isSunk = jest.fn(() => this.hits >= this.length);
+  this.addCoord = jest.fn((coord) => this.cells.push(coord));
   ShipMock.shipInfo = jest.fn(() => [1,2,3,4,5] );
 });
 
@@ -94,6 +96,13 @@ describe('Gameboard class', () => {
       gameboard.placeShip('A1', submarineMockOne);
       gameboard.placeShip('H5', submarineMockTwo);
       expect(Object.keys(gameboard.ships).length).toBe(1);
+    })
+
+    it('adds the taken cell to the ship\'s cell list', () => {
+      gameboard = new Gameboard();
+      const destroyerMock = new ShipMock('destroyer', 3);
+      gameboard.placeShip('A1', destroyerMock);
+      expect(destroyerMock.addCell).toHaveBeenCalled();
     })
   })
 

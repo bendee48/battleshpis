@@ -6,7 +6,8 @@ import eventObserver from "./eventObserver";
  * Module for displaying HTML elements of the DOM.
  *
  * @returns {Object} The public API with the displayBoard, displayDraggables, activateAIBoard,
-   *                 activeBoard, inertBoard, displayGameOver, clearPage, removeGameOver functions.
+   *                 activeBoard, inertBoard, displayGameOver, clearPage, removeGameOver and
+   *                 highlightSunkShip functions.
  */
 const DOMController = (() => {
   // container for the game boards
@@ -115,10 +116,27 @@ const DOMController = (() => {
   }
 
   /**
+   * Highlights an entire sunken ship.
+   * @param {Array<HTMLElement>} - The HTML elements representing the cells the ship occupies
+   * @returns {undefined}
+   */
+  const highlightSunkShip = (cells) => {
+    // highlight the first and last element seperately
+    const [first, last] = [cells[0], cells.at(-1)];
+    first.classList.add('highlight-first');
+    last.classList.add('highlight-last');
+
+    cells.forEach(cell => {
+      cell.classList.add('highlight');
+    })
+  }
+
+  /**
    * Public API of the module.
    * 
    * @returns {Object} The public API with the displayBoard, displayDraggables, activateAIBoard,
-   *                   activeBoard, inertBoard, displayGameOver, clearPage, removeGameOver functions.
+   *                   activeBoard, inertBoard, displayGameOver, clearPage, removeGameOver and 
+   *                   highlightSunkShip functions.
    */
   return { 
            displayBoard, 
@@ -128,7 +146,8 @@ const DOMController = (() => {
            inertBoard,
            displayGameOver,
            clearPage,
-           removeGameOver
+           removeGameOver,
+           highlightSunkShip
          }
 })();
 

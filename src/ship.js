@@ -8,11 +8,13 @@ class Ship {
   /**
    * @constructor
    * @type {number} hits - The number of hits
+   * @type {Array<HTMLElement>} cells - An array of the HTML elements representing the cells the ship occupies
    */
   constructor(name, length) {
     this._name = name;
     this._length = length;
     this._hits = 0;
+    this._cells = [];
   }
 
   /**
@@ -60,6 +62,15 @@ class Ship {
   }
 
   /**
+   * Gets a list of the cells the ship occupies on the board.
+   *
+   * @return {Array<HTMLElement>} - Array of the HTML elements that represent the ship 
+   */
+  get cells() {
+    return this._cells;
+  }
+
+  /**
    * Registers a hit to the ship.
    *
    * @return {undefined}
@@ -75,6 +86,15 @@ class Ship {
    */
   isSunk() {
     return this.hits >= this.length;
+  }
+
+  /**
+   * Adds a cell to cells.
+   *
+   * @return {undefined}
+   */
+  addCell(cell) {
+    this._cells.push(cell);
   }
 }
 
