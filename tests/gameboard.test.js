@@ -140,6 +140,8 @@ describe('Gameboard class', () => {
   describe('allSunk()', () => {
     const gameboard = new Gameboard();
     const battleshipMock = new ShipMock('battleship', 4)
+    const mockElement = document.createElement('div');
+    battleshipMock.cells = [mockElement, mockElement, mockElement, mockElement];
     gameboard.placeShip('A1', battleshipMock);
 
     it('returns false if not all ships on the board have been sunk', () => {

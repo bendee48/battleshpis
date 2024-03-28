@@ -95,7 +95,7 @@ button {
 }
 
 .ai-board .cell {
-  background-color: #fff;
+  /* background-color: #fff; */
 }
 
 .ai-board.active-board {

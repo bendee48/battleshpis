@@ -132,7 +132,7 @@ const game = (() => {
         // or give AI another go if move is a hit
         _handleAITurn();
       }
-    }, 1500);
+    }, 0);
   }
 
   /**
@@ -144,13 +144,18 @@ const game = (() => {
   const _checkWin = (board) => {
     if (board.name === 'ai-board' && board.allSunk()) {
       const text = 'Player won!';
-      DOMController.displayGameOver(text);
-      _handleGameOver();
+      // slight delay for player to recognise last ship has been sunk
+      setTimeout(() => {
+        DOMController.displayGameOver(text);
+        _handleGameOver();
+      }, 500);
       return true;
     } else if (board.name === 'player-board' && board.allSunk()){
       const text = 'Computer won!'
-      DOMController.displayGameOver(text);
-      _handleGameOver();
+      setTimeout(() => {
+        DOMController.displayGameOver(text);
+        _handleGameOver();
+      }, 500)
       return true;
     }
   }
