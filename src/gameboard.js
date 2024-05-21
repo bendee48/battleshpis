@@ -104,6 +104,8 @@ class Gameboard {
       // if attack sinks ship, highlight it's cells
       if (ship.isSunk()) {
         DOMController.highlightSunkShip(ship.cells);
+        const msg = `${ship.name} has been sunk!`
+        DOMController.displayMessage(msg);
       }
       // return true to indicate a hit
       return true;

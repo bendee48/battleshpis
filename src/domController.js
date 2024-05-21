@@ -16,6 +16,8 @@ const DOMController = (() => {
   const draggablesContainer = document.querySelector('.draggables-container');
   // page container
   const pageContainer = document.querySelector('.page-container');
+  // message container
+  const messageContainer = document.querySelector('.message-container');
 
   /**
    * Displays a game board.
@@ -131,6 +133,25 @@ const DOMController = (() => {
     })
   }
 
+  // TODO messages
+  const displayMessage = (text) => {
+    const msg = DOMBuilder.buildStandardElement('div', 'msg');
+    msg.textContent = text;
+    console.log(boardsContainer, draggablesContainer);
+    messageContainer.appendChild(msg);
+    // triggers reflow so that initial values are set (for transition)
+    msg.offsetWidth;
+    msg.classList.add('appear');
+    removeMessage(msg)
+  }
+
+  const removeMessage = (msg) => {
+    setTimeout(() => {
+      msg.classList.add('disappear');
+      setTimeout(() => msg.remove(), 2000);
+    }, 2000);
+  }
+
   /**
    * Public API of the module.
    * 
@@ -147,7 +168,8 @@ const DOMController = (() => {
            displayGameOver,
            clearPage,
            removeGameOver,
-           highlightSunkShip
+           highlightSunkShip,
+           displayMessage
          }
 })();
 
