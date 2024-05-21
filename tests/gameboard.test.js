@@ -4,6 +4,8 @@
 
 import Gameboard from 'gameboard';
 import Ship from 'ship';
+import DOMController from 'domController';
+jest.mock('domController'); // mock DOMCOntroller to intercept any calls to the actual module
 jest.mock('ship');
 
 const ShipMock = Ship;
