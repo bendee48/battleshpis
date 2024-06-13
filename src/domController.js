@@ -137,7 +137,6 @@ const DOMController = (() => {
   const displayMessage = (text) => {
     const msg = DOMBuilder.buildStandardElement('div', 'msg');
     msg.textContent = text;
-    console.log(boardsContainer, draggablesContainer);
     messageContainer.appendChild(msg);
     // triggers reflow so that initial values are set (for transition)
     msg.offsetWidth;

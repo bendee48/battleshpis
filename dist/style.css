@@ -46,6 +46,35 @@ button {
   position: relative;
 }
 
+/* Messages */
+
+.message-container {
+  /* border: 2px solid red; */
+  /* display: flex;
+  flex-direction: column; */
+  padding: 2em;
+}
+
+.msg {
+  display: inline-block;
+  padding: 1em;
+  margin: .5em;
+  background-color: aliceblue;
+  opacity: 0.5;
+  transition: transform 1s,
+              opacity 1s;
+}
+
+.msg.appear {
+  opacity: 1;
+  transform: translateY(.5rem);
+}
+
+.msg.disappear {
+  transform: translateY(2rem);
+  opacity: 0;
+}
+
 /* End Screen */
 
 .end-screen {

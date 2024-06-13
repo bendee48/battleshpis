@@ -99,12 +99,16 @@ class Gameboard {
       const ship = this.ships[shipName];
       // record hit on ship
       ship.hit();
+      // Display message for ship hits except last hit
+      if (ship.length - ship.hits >= 1) {
+        DOMController.displayMessage("Boom!");
+      }
       // add .hit class to cell
       this.cells[coord].classList.add('hit');
       // if attack sinks ship, highlight it's cells
       if (ship.isSunk()) {
         DOMController.highlightSunkShip(ship.cells);
-        const msg = `${ship.name} has been sunk!`
+        const msg = `KaBoom! ${this.name}'s ${ship.name} has been sunk!`
         DOMController.displayMessage(msg);
       }
       // return true to indicate a hit
